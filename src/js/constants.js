@@ -1,0 +1,17 @@
+export const ACTION = {
+    FORWARD:'FORWARD',
+    BACKWARD:'BACKWARD',
+    RIGHT:'RIGHT',
+    LEFT:'LEFT',
+    STOP:'STOP',
+    STANDUP:'STANDUP',
+    SEARCH:'SEARCH',
+    GOBACK:'GOBACK',
+    SITDOWN:'SITDOWN'
+}
+
+export const TARGET = {
+    DRONE:'DRONE',
+    SPHERO1:'SPHERO1',
+    SPHERO2:'SPHERO2'
+}
