@@ -1,9 +1,11 @@
 import io from 'socket.io-client'
-import {ACTION, TARGET} from './constants'
+import {ACTION, DEVICE, ACTIVITY} from './constants'
+import * as helpers from './helper'
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const port = "8888"
-    const urlServerWebSocket = `172.20.10.10:${port}`
+    const ip = `172.20.10.14`
+    const urlServerWebSocket = `${ip}:${port}`
 
     // se connecte au serveur
     const socket = io(urlServerWebSocket);
@@ -17,18 +19,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         standupButton.addEventListener("click",  () => {
             console.log("stand up clicked");
-            socket.emit("test",{
-                targetActivity:TARGET.DRONE,
-                action:ACTION.STANDUP
-            });
+            socket.emit("test",helpers.formatDatas(DEVICE.DRONE,ACTION.STANDUP,ACTIVITY.DOG));
         })
 
         searchButton.addEventListener("click", function () {
             console.log("search clicked");
-            socket.emit("test",{
-                targetActivity:TARGET.SPHERO1,
-                action:ACTION.SEARCH
-            });
+            socket.emit("test",helpers.formatDatas(DEVICE.DRONE,ACTION.SEARCH,ACTIVITY.DOG));
         })
     
         gobackButton.addEventListener("click", function () {

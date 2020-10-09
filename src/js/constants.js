@@ -10,8 +10,13 @@ export const ACTION = {
     SITDOWN:'SITDOWN'
 }
 
-export const TARGET = {
+export const DEVICE = {
     DRONE:'DRONE',
     SPHERO1:'SPHERO1',
     SPHERO2:'SPHERO2'
+}
+
+export const ACTIVITY = {
+    DOG:'DOGACTIVITY',
+    CLUE:'CLUECOLLECTACTIVITY'
 }
