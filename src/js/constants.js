@@ -8,15 +8,15 @@ export const ACTION = {
     SEARCH:'SEARCH',
     GOBACK:'GOBACK',
     SITDOWN:'SITDOWN'
-}
+};
 
 export const DEVICE = {
     DRONE:'DRONE',
     SPHERO1:'SPHERO1',
     SPHERO2:'SPHERO2'
-}
+};
 
 export const ACTIVITY = {
-    DOG:'DOGACTIVITY',
-    CLUE:'CLUECOLLECTACTIVITY'
-}
+    DOG:'DOG_ACTIVITY',
+    CLUE:'CLUE_ACTIVITY'
+};

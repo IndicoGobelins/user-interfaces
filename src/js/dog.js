@@ -31,6 +31,7 @@ class Application {
     // EVENTS HANDLER
     _initButtonsEvents() {
         this.standUpButton.addEventListener('click', () => {
+            console.log("standup clicked");
             this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
         });
 
@@ -41,10 +42,12 @@ class Application {
 
         this.goBackButton.addEventListener("click", () => {
             console.log("go back clicked");
+            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.GOBACK, ACTIVITY.DOG));
         });
 
         this.sitDownButton.addEventListener("click", () => {
             console.log("sit down clicked");
+            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.SITDOWN, ACTIVITY.DOG));
         });
     }
 
