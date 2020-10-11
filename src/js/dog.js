@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import {ACTION, ACTIVITY, DEVICE} from './constants'
+import {ACTION, ACTIVITY, DEVICE, EVENT} from './constants'
 import * as helpers from './helper'
 
 /**
@@ -19,7 +19,7 @@ class Application {
         this.searchButton = document.getElementById('searchButton');
         this.goBackButton = document.getElementById('gobackButton');
         this.sitDownButton = document.getElementById('sitdownButton');
-        this.socketClient = io(this.getUrlWebsocketServer());
+        this.socketClient = io(helpers.getUrlWebsocketServer());
     }
 
     _initWebSocketConnection() {
@@ -32,31 +32,23 @@ class Application {
     _initButtonsEvents() {
         this.standUpButton.addEventListener('click', () => {
             console.log("standup clicked");
-            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
         });
 
         this.searchButton.addEventListener("click", () => {
             console.log("search clicked");
-            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
         });
 
         this.goBackButton.addEventListener("click", () => {
             console.log("go back clicked");
-            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.GOBACK, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.GOBACK, ACTIVITY.DOG));
         });
 
         this.sitDownButton.addEventListener("click", () => {
             console.log("sit down clicked");
-            this.socketClient.emit("test", helpers.formatDatas(DEVICE.DRONE, ACTION.SITDOWN, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SITDOWN, ACTIVITY.DOG));
         });
-    }
-
-    // HELPERS
-    getUrlWebsocketServer() {
-        const ip = '192.168.1.90';
-        const port = '8888';
-
-        return `${ip}:${port}`;
     }
 }
 
