@@ -21,17 +21,17 @@ C'est la première partie de l'architecture. L'ensemble du code source est situ�
 
 ### Exemple de la conversion du clique en message WebSocket
 * Je clique sur le bouton `Avancer` (dans l'activité de la récolte d'indice).
-* La classe principale détecte l'évènement et va construire le message avec le helper :
+* La classe Javascript principale l'évènement et va construire le message avec le helper :
 ```js
 const data = helpers.formatDatas(DEVICE.SPHERO1, ACTION.FORWARD, ACTIVITY.CLUE)
 ```
-* La variable data sera de la forme : `$@#SPHERO1@#FORWARD@#CLUE_ACTIVITY`
+* La variable data aura pour valeur : `$@#SPHERO1@#FORWARD@#CLUE_ACTIVITY`
 
-### Explication rapide du protocol
-Les données qui sont envoyées à l'application IOS respecte le format suivant :
+### Explication rapide du protocole
+Les données qui sont envoyées à l'application IOS respectent le format suivant :
 `header + separateur + device + separateur + action + separateur + activité`
 
 * Le **header** permet de distinguer les messages qui proviennent des activités des autres messages indésirables (que nous ne gérons pas).
 * Le **device** est l'appareil ciblé à piloter.
-* L'**action** correspond à l'action précise d'une activité qui sera exécuté (exemple: avancer la sphéro).
+* L'**action** correspond à l'action précise d'une activité qui sera exécutée (exemple: avancer la sphéro).
 * L'**activité** correspond à l'activité courante qui est en train d'être jouée.
