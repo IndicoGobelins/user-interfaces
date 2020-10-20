@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 import * as helpers from "./helper";
-import {ACTION, ACTIVITY, DEVICE, EVENT} from "./constants";
+import { ACTION, ACTIVITY, DEVICE, EVENT } from "./constants";
 
 class Application {
 
@@ -19,6 +19,18 @@ class Application {
         this.collectButton = document.getElementById('collect');
         this.socketClient = io(helpers.getUrlWebsocketServer());
         this.hasKeyPressed = false
+
+        this.actionButtons = document.querySelectorAll(".btn-action");
+
+        this.device1 = {
+            dom: document.getElementById('SPHERO1'),
+            isChecked: true
+        };
+        this.device2 = {
+            dom: document.getElementById('SPHERO2'),
+            isChecked: false
+        };
+        this.device = this._getCurrentDevice();
     }
 
     _initWebSocketConnection() {
@@ -26,33 +38,79 @@ class Application {
             this._initButtonsEvents();
             this._initFunDirection();
         });
+
+        this._initButtonsEvents();
+        this._initFunDirection();
+        this._initRadioButton();
+    }
+
+    // SET DEVICE DYNAMICALLY
+    _getCurrentDevice() {
+        if (this.device1.isChecked)
+            return DEVICE.SPHERO1;
+        else
+            return DEVICE.SPHERO2;
+    }
+
+    _setCurrentDevice(device) {
+        this.device = device;
     }
 
     // EVENTS HANDLER
     _initButtonsEvents() {
-        this.forwardButton.addEventListener('click', () => {
+
+        for (let index = 0; index < this.actionButtons.length; index++) {
+            const element = this.actionButtons[index];
+            element.addEventListener('touchend', () => {
+                console.log("stop");
+                this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.STOP, ACTIVITY.CLUE));
+            });
+        }
+
+        this.forwardButton.addEventListener('touchstart', () => {
             console.log("forward clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.FORWARD, ACTIVITY.CLUE));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.FORWARD, ACTIVITY.CLUE));
         });
 
-        this.backwardButton.addEventListener("click", () => {
+        this.backwardButton.addEventListener("touchstart", () => {
             console.log("backward clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.BACKWARD, ACTIVITY.CLUE));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.BACKWARD, ACTIVITY.CLUE));
         });
 
-        this.leftButton.addEventListener("click", () => {
+        this.leftButton.addEventListener("touchstart", () => {
             console.log("left clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.LEFT, ACTIVITY.CLUE));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.LEFT, ACTIVITY.CLUE));
         });
 
-        this.rightButton.addEventListener("click", () => {
+        this.rightButton.addEventListener("touchstart", () => {
             console.log("right clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.RIGHT, ACTIVITY.CLUE));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.RIGHT, ACTIVITY.CLUE));
         });
 
         this.collectButton.addEventListener("click", () => {
             console.log("collect clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.COLLECT, ACTIVITY.CLUE));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.COLLECT, ACTIVITY.CLUE));
+        });
+        
+    }
+
+    _initRadioButton() {
+
+        let array = [this.device1, this.device2];
+
+        array.forEach(element => {
+            element.dom.addEventListener("click", (e) => {
+
+                array.forEach(el => {
+                    el.dom.classList.remove("active");
+                    el.isChecked = false;
+                });
+
+                e.target.classList.add("active");
+                element.isChecked = true;
+            
+                this.device = this._getCurrentDevice();
+            })
         });
     }
 
@@ -62,19 +120,19 @@ class Application {
                 switch (event.code) {
                     case 'ArrowUp':
                         console.log('press up arrow key');
-                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.FORWARD, ACTIVITY.CLUE));
+                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.FORWARD, ACTIVITY.CLUE));
                         break;
                     case 'ArrowDown':
                         console.log('press down arrow key');
-                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.BACKWARD, ACTIVITY.CLUE));
+                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.BACKWARD, ACTIVITY.CLUE));
                         break;
                     case 'ArrowRight':
                         console.log('press right arrow key');
-                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.RIGHT, ACTIVITY.CLUE));
+                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.RIGHT, ACTIVITY.CLUE));
                         break;
                     case 'ArrowLeft':
                         console.log('press left arrow key');
-                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.LEFT, ACTIVITY.CLUE));
+                        this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.LEFT, ACTIVITY.CLUE));
                         break;
                     default:
                         break
@@ -91,7 +149,7 @@ class Application {
                 case 'ArrowRight':
                 case 'ArrowLeft':
                     console.log(`release ${event.code}`);
-                    this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.SPHERO1, ACTION.STOP, ACTIVITY.CLUE));
+                    this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.STOP, ACTIVITY.CLUE));
                     break;
                 default:
                     break;

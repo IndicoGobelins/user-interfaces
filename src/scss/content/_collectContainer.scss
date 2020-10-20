@@ -1,0 +1,39 @@
+.collectContainer {
+    width: 35%;
+    position: relative;
+    
+    // centrer horizontalement
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .collectActionContainer {
+        height: 70px;
+        width: 200px;
+        position: relative;
+
+        .collectElement {
+            position: absolute;
+
+            &#echantilon {
+                top: 0;
+                display: flex;
+                width: 100%;
+
+                .iconeEchantillon {
+                    border-radius: 50%;
+                    border: 1px solid $pale-lilac;
+                    height: 15px;
+                    width: 15px;
+                    margin-right: 10px;
+                }
+            }
+    
+            &#collect {
+                bottom: 0;
+                width: fit-content;
+            }
+        }
+
+    }
+}

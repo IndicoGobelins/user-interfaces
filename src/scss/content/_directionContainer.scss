@@ -1,0 +1,46 @@
+.directionContainer {
+    width: 45%;
+    position: relative;
+
+    // centrer horizontalement
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btnActionContainer {
+        width: 150px;
+        height: 150px;
+        position: relative;
+
+        .btn-action {
+            background-color: red;
+            border-radius: 50%;
+            border: none;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+
+            &#forward {
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+
+            &#backward {
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+
+            &#left {
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+            &#right {
+                top: 50%;
+                transform: translate(0, -50%);
+                right: 0;
+            }
+        }
+    }
+}

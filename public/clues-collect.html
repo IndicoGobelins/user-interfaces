@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOG EXP</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
-<button id="forward">AVANCER</button>
-<button id="backward">RECULER</button>
-<button id="right">DROITE</button>
-<button id="left">GAUCHE</button>
-<button id="collect">COLLECTER LE SANG</button>
 
+    <div class="content">
 
-<script type="text/javascript" src="js/clues.js"></script>
+        <div class="directionContainer">
+
+            <div class="btnActionContainer">
+                <button id="forward" class="btn-action">A</button>
+                <button id="backward" class="btn-action">R</button>
+                <button id="right" class="btn-action">D</button>
+                <button id="left" class="btn-action">G</button>
+            </div>
+
+        </div>
+
+        <div class="middleContainer">
+            <div class="logoContainer">
+                logo
+            </div>
+            <div class="radioContainer">
+                <div class="radioComponent">
+                    <button id="SPHERO1" data-device="SPHERO1" class="radioInput active"></button>
+                    <label for="SPHERO1">Indice 1</label>
+                </div>
+                <div class="radioComponent">
+                    <button id="SPHERO2" data-device="SPHERO2" class="radioInput"></button>
+                    <label for="SPHERO2">Indice 2</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="collectContainer">
+            <div class="collectActionContainer">
+
+                <div id="echantilon" class="collectElement">
+                    <div class="iconeEchantillon"></div>
+                    <p>Echantillon vide</p>
+                </div>
+
+                <button id="collect" class="collectElement">COLLECTER LE SANG</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/clues.js"></script>
 </body>
 
 

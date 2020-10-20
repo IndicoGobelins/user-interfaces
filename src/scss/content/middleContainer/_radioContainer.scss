@@ -1,0 +1,40 @@
+.radioContainer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content:  center;
+
+    .radioComponent {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-items: center;
+        height: 45px;
+
+        .radioInput {
+            height: 20px;
+            width: 20px;
+            border: none;
+            border-radius: 50%;
+            background-color: transparent;
+            
+            &:not(.active) {
+                //box-shadow: 5px 2px 8px 0 #14141e, -5px -2px 8px 0 #152eee, inset -5px -2px 5px 0 rgba(20, 20, 30, 0.2), inset 5px 2px 5px 0 rgba(14, 29, 242, 0.5);
+                box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
+                background-color: $vibrant-blue-60;
+            }
+
+            &.active {
+                box-shadow: inset 3px 3px 6px 0 #14141e, inset -3px -3px 6px 0 #152eee;
+                background-color: $blue-blue;
+            }
+        }
+
+        .radioLabel {
+            position: absolute;
+            bottom: 0;
+            color: white !important;
+        }
+    }
+}
