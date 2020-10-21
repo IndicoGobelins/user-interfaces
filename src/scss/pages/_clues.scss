@@ -1,0 +1,199 @@
+.content {
+    display: flex;
+    height: 80vh;
+    padding: 10vh 10px;
+
+    .directionContainer {
+        width: 35%;
+        position: relative;
+    
+        // centrer horizontalement
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .btnActionContainer {
+            width: $direction-btn-container-size;
+            height: $direction-btn-container-size;
+            position: relative;
+    
+            .btn-action {
+                background-color: $royal;
+                border-radius: 50%;
+                border: none;
+                height: $diretion-btn-size;
+                width: $diretion-btn-size;
+                position: absolute;
+                box-shadow: $direction-btn-box-shadow;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: $arrow-height;
+                }
+    
+                &#forward {
+                    left: 50%;
+                    transform: translate(-50%, 0);
+
+                    img {
+                        transform: rotate(90deg);
+                    }
+                }
+    
+                &#backward {
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+
+                    img {
+                        transform: rotate(-90deg);
+                    }
+                }
+    
+                &#left {
+                    top: 50%;
+                    transform: translate(0, -50%);
+                }
+    
+                &#right {
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    right: 0;
+
+                    img {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .middleContainer {
+        width: 30%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        .logoContainer, .logoContainer img {
+            width: $logo-width;
+        }
+
+        .radioContainer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content:  center;
+        
+            .radioComponent {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                align-items: center;
+                height: $radio-component-height;
+                font-size: $font-size;
+        
+                .radioInput {
+                    height: 20px;
+                    width: 20px;
+                    border: none;
+                    border-radius: 50%;
+                    background-color: transparent;
+                    
+                    &:not(.active) {
+                        box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
+                        background-color: $vibrant-blue-60;
+                    }
+        
+                    &.active {
+                        box-shadow: inset 1px 1px 6px 0 #14141e, inset -1px -1px 6px 0 #152eee;
+                        background-color: $blue-blue;
+                    }
+                }
+        
+                .radioLabel {
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
+        }
+
+    }
+
+    .collectContainer {
+        width: 35%;
+        position: relative;
+        
+        // centrer horizontalement
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .collectActionContainer {
+            height: $collect-container-height;
+            width: $collect-container-width;
+            position: relative;
+    
+            .collectElement {
+                position: absolute;
+    
+                &#echantilon {
+                    top: 0;
+                    display: flex;
+                    width: 100%;
+                    font-size: $font-size;
+    
+                    #iconeEchantillon {
+                        border-radius: 50%;
+                        border: 1px solid $pale-lilac;
+                        height: 15px;
+                        width: 15px;
+                        margin-right: 10px;
+    
+                        &:after {
+                            content: "✔";
+                            display: none;
+                            color: $royal;
+                        }
+
+                        &.isPlain {
+                            background-color: $pale-lilac;
+        
+                            &:after {
+                                display: block;
+                            }
+                        }
+                    }
+    
+                    
+                }
+        
+                &#collect {
+                    align-items: center;
+                    display: flex;
+                    bottom: 0;
+                    width: fit-content;
+                    padding: 15px 30px;
+                    border-radius: 50px;
+                    font-size: $font-size;
+                    border: none;
+                    color: $white;
+                    background-color: $vibrant-blue-60;
+                    box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
+    
+                    .collect-icone {
+                        margin-right: 20px;
+
+                        img {
+                            width: $collect-icone-width;
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+}

@@ -22,13 +22,17 @@ class Application {
 
         this.actionButtons = document.querySelectorAll(".btn-action");
 
+        this.collectIcone = document.getElementById("iconeEchantillon");
+
         this.device1 = {
             dom: document.getElementById('SPHERO1'),
-            isChecked: true
+            isChecked: true,
+            isCollected: false
         };
         this.device2 = {
             dom: document.getElementById('SPHERO2'),
-            isChecked: false
+            isChecked: false,
+            isCollected: false
         };
         this.device = this._getCurrentDevice();
     }
@@ -42,6 +46,7 @@ class Application {
         this._initButtonsEvents();
         this._initFunDirection();
         this._initRadioButton();
+        this._initCollectEvent();
     }
 
     // SET DEVICE DYNAMICALLY
@@ -110,8 +115,27 @@ class Application {
                 element.isChecked = true;
             
                 this.device = this._getCurrentDevice();
+
+                if(element.isCollected) {
+                    this.collectIcone.classList.add("isPlain");
+                } else {
+                    this.collectIcone.classList.remove("isPlain");
+                }
             })
         });
+    }
+
+    _initCollectEvent() {
+        this.collectButton.addEventListener("click", () => {
+            if(this.device1.isChecked && !this.device1.isCollected) {
+                this.device1.isCollected = true;
+            }
+            if(this.device2.isChecked && !this.device2.isCollected) {
+                this.device2.isCollected = true;
+            }
+
+            this.collectIcone.classList.add("isPlain");
+        })
     }
 
     _initFunDirection() {

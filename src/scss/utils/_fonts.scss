@@ -1,1 +1,22 @@
 // Insert police here ...
+@font-face {
+    font-family: "Gotham";
+    src: url("/public/font/Gotham-Black.otf") format("opentype"),
+        url("/public/font/Gotham-Bold.otf") format("opentype"),
+        url("/public/font/Gotham-BookItalic.otf") format("opentype"),
+        url("/public/font/Gotham-Light.otf") format("opentype"),
+        url("/public/font/Gotham-Thin.otf") format("opentype"),
+        url("/public/font/Gotham-ThinItalic.otf") format("opentype"),
+        url("/public/font/Gotham-UltraItalic.otf") format("opentype"),
+        url("/public/font/Gotham-XLight.otf") format("opentype"),
+        url("/public/font/Gotham-XLightItalic.otf") format("opentype"),
+        url("/public/font/GothamBold.ttf") format("truetype"),
+        url("/public/font/GothamBoldItalic.ttf") format("truetype"),
+        url("/public/font/GothamBook.ttf") format("truetype"),
+        url("/public/font/GothamBookItalic.ttf") format("truetype"),
+        url("/public/font/GothamLight.ttf") format("truetype"),
+        url("/public/font/GothamLightItalic.ttf") format("truetype"),
+        url("/public/font/GothamMedium.ttf") format("truetype"),
+        url("/public/font/GothamMedium_1.ttf") format("truetype"),
+        url("/public/font/GothamMediumItalic.ttf") format("truetype")
+   }
