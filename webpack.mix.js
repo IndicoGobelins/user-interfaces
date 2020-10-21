@@ -13,4 +13,9 @@ let mix = require('laravel-mix');
 
 mix.js('src/js/dog.js', 'public/js/')
     .js('src/js/clues.js', 'public/js/')
-    .sass('src/scss/main.scss', 'public/css/');
+    .js('src/js/labo.js', 'public/js/')
+    .sass('src/scss/main.scss', 'public/css/')
+    .options({
+        processCssUrls: false,
+    });
+

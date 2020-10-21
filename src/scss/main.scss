@@ -1,5 +1,7 @@
-@import 'utils/variables';
 @import 'utils/reset';
+@import 'utils/fonts';
+@import 'utils/variables';
+@import "utils/common";
 
 @import 'body';
 
@@ -11,3 +13,7 @@
 
 @import 'content/directionContainer';
 @import 'content/collectContainer';
+
+// PAGES
+@import "pages/labo";
+@import "pages/dog";

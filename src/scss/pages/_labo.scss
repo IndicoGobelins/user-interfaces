@@ -1,0 +1,60 @@
+body#labo-activity {
+    background-color: $royal;
+
+    div.wrapper {
+        max-width: 414px;
+        margin: 0 auto;
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 50px;
+
+        img#logo{
+            margin: 0 auto;
+            width: 150px;
+            padding-bottom: 50px;
+        }
+
+        img#rotation {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        p {
+            margin: 0 auto;
+            text-align: center;
+            width: 240px;
+            color: $white;
+            padding: 60px 0px;
+            font-size: 20px;
+        }
+
+        button {
+            display: inline;
+            width: 250px;
+            height: 80px;
+            color: $white;
+            background-color: $blue-blue;
+            border-radius: 40px;
+            margin: 0 auto;
+            font-size: 24px;
+            border: none;
+        }
+
+        #loadBarContainer {
+            height: 20px;
+            width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+
+            #loadBar {
+                background-color: $white;
+                border-radius: 10px;
+                height: 100%;
+                width: 0%;
+                transition: width 1s linear, background-color .5s ease-out;
+            }
+        }
+    }
+}

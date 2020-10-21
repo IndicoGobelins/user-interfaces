@@ -17,8 +17,6 @@ class Application {
     _initElements() {
         this.standUpButton = document.getElementById('standupButton');
         this.searchButton = document.getElementById('searchButton');
-        this.goBackButton = document.getElementById('gobackButton');
-        this.sitDownButton = document.getElementById('sitdownButton');
         this.socketClient = io(helpers.getUrlWebsocketServer());
     }
 
@@ -32,22 +30,12 @@ class Application {
     _initButtonsEvents() {
         this.standUpButton.addEventListener('click', () => {
             console.log("standup clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.TEST, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
         });
 
         this.searchButton.addEventListener("click", () => {
             console.log("search clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
-        });
-
-        this.goBackButton.addEventListener("click", () => {
-            console.log("go back clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.GOBACK, ACTIVITY.DOG));
-        });
-
-        this.sitDownButton.addEventListener("click", () => {
-            console.log("sit down clicked");
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SITDOWN, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.TEST, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
         });
     }
 }

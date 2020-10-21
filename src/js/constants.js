@@ -8,20 +8,24 @@ export const ACTION = {
     SEARCH: 'SEARCH',
     GOBACK: 'GOBACK',
     SITDOWN: 'SITDOWN',
-    COLLECT: 'COLLECT'
+    COLLECT: 'COLLECT',
+    START: 'START'
 };
 
 export const DEVICE = {
     DRONE: 'DRONE',
     SPHERO1: 'SPHERO1',
-    SPHERO2: 'SPHERO2'
+    SPHERO2: 'SPHERO2',
+    NONE: 'NONE'
 };
 
 export const ACTIVITY = {
     DOG: 'DOG_ACTIVITY',
-    CLUE: 'CLUE_ACTIVITY'
+    CLUE: 'CLUE_ACTIVITY',
+    LABO_ACTIVITY: 'LABO_ACTIVITY'
 };
 
 export const EVENT = {
-    INDICO: 'INDICO'
+    INDICO: 'INDICO',
+    TEST: 'TEST'
 };
