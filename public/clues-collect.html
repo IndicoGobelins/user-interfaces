@@ -30,11 +30,11 @@
             <div class="radioContainer">
                 <div class="radioComponent">
                     <button id="SPHERO1" data-device="SPHERO1" class="radioInput active"></button>
-                    <label for="SPHERO1">Indice 1</label>
+                    <label for="SPHERO1" class="radioLabel">Indice 1</label>
                 </div>
                 <div class="radioComponent">
                     <button id="SPHERO2" data-device="SPHERO2" class="radioInput"></button>
-                    <label for="SPHERO2">Indice 2</label>
+                    <label for="SPHERO2" class="radioLabel">Indice 2</label>
                 </div>
             </div>
         </div>
@@ -43,11 +43,16 @@
             <div class="collectActionContainer">
 
                 <div id="echantilon" class="collectElement">
-                    <div class="iconeEchantillon"></div>
+                    <div class="iconeEchantillon isPlain"></div>
                     <p>Echantillon vide</p>
                 </div>
 
-                <button id="collect" class="collectElement">COLLECTER LE SANG</button>
+                <button id="collect" class="collectElement">
+                    <span class="collect-icone">
+                        <img src="../src/ressources/svg/recolter.svg"/>
+                    </span>
+                    RECOLTER
+                </button>
 
             </div>
         </div>

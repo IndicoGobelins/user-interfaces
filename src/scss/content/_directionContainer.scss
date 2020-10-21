@@ -8,17 +8,18 @@
     align-items: center;
 
     .btnActionContainer {
-        width: 150px;
-        height: 150px;
+        width: $direction-btn-container-size;
+        height: $direction-btn-container-size;
         position: relative;
 
         .btn-action {
-            background-color: red;
+            background-color: $royal;
             border-radius: 50%;
             border: none;
-            height: 50px;
-            width: 50px;
+            height: $diretion-btn-size;
+            width: $diretion-btn-size;
             position: absolute;
+            box-shadow: $direction-btn-box-shadow;
 
             &#forward {
                 left: 50%;
