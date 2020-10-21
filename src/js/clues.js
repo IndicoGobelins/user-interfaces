@@ -72,22 +72,26 @@ class Application {
             });
         }
 
-        this.forwardButton.addEventListener('touchstart', () => {
+        this.forwardButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
             console.log("forward clicked");
             this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.FORWARD, ACTIVITY.CLUE));
         });
 
-        this.backwardButton.addEventListener("touchstart", () => {
+        this.backwardButton.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             console.log("backward clicked");
             this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.BACKWARD, ACTIVITY.CLUE));
         });
 
-        this.leftButton.addEventListener("touchstart", () => {
+        this.leftButton.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             console.log("left clicked");
             this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.LEFT, ACTIVITY.CLUE));
         });
 
-        this.rightButton.addEventListener("touchstart", () => {
+        this.rightButton.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             console.log("right clicked");
             this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.RIGHT, ACTIVITY.CLUE));
         });
