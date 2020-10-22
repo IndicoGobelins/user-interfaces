@@ -25,11 +25,15 @@ class Application {
         this.collectIcone = document.getElementById("iconeEchantillon");
 
         this.device1 = {
+            id: 'SPHERO1',
+            labelDom: document.getElementById('SPHERO1').labels[0],
             dom: document.getElementById('SPHERO1'),
             isChecked: true,
             isCollected: false
         };
         this.device2 = {
+            id: 'SPHERO2',
+            labelDom: document.getElementById('SPHERO2').labels[0],
             dom: document.getElementById('SPHERO2'),
             isChecked: false,
             isCollected: false
@@ -47,6 +51,7 @@ class Application {
         this._initFunDirection();
         this._initRadioButton();
         this._initCollectEvent();
+
     }
 
     // SET DEVICE DYNAMICALLY
@@ -113,10 +118,12 @@ class Application {
                 array.forEach(el => {
                     el.dom.classList.remove("active");
                     el.isChecked = false;
+                    el.labelDom.classList.add("isUnactive");
                 });
 
                 e.target.classList.add("active");
                 element.isChecked = true;
+                element.labelDom.classList.remove("isUnactive");
             
                 this.device = this._getCurrentDevice();
 

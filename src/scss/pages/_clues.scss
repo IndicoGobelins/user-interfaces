@@ -4,12 +4,12 @@
     padding: 10vh 10px;
 
     .directionContainer {
-        width: 35%;
+        flex: 1;
         position: relative;
     
         // centrer horizontalement
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
     
         .btnActionContainer {
@@ -72,7 +72,7 @@
     }
 
     .middleContainer {
-        width: 30%;
+        flex: 1;
         position: relative;
         display: flex;
         justify-content: center;
@@ -82,7 +82,7 @@
         }
 
         .radioContainer {
-            width: 100%;
+            width: 70%;
             position: absolute;
             bottom: 0;
             display: flex;
@@ -97,8 +97,8 @@
                 font-size: $font-size;
         
                 .radioInput {
-                    height: 20px;
-                    width: 20px;
+                    height: $radio-button-size;
+                    width: $radio-button-size;
                     border: none;
                     border-radius: 50%;
                     background-color: transparent;
@@ -117,6 +117,12 @@
                 .radioLabel {
                     position: absolute;
                     bottom: 0;
+                    font-size: 13px;
+                    font-weight: bold;
+
+                    &.isUnactive {
+                        opacity: 0.3;
+                    }
                 }
             }
         }
@@ -124,12 +130,11 @@
     }
 
     .collectContainer {
-        width: 35%;
+        flex: 1;
         position: relative;
         
         // centrer horizontalement
         display: flex;
-        justify-content: center;
         align-items: center;
     
         .collectActionContainer {
@@ -176,15 +181,15 @@
                     align-items: center;
                     display: flex;
                     // bottom: 0;
-                    width: 200px;
-                    padding: 15px 30px;
+                    width: fit-content;
+                    padding: 30px 40px;
                     border-radius: 50px;
                     font-size: $font-size;
                     border: none;
                     color: $white;
-                    background-color: $vibrant-blue-60;
-                    box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
-    
+                    background-color: $royal;
+                    box-shadow: $direction-btn-box-shadow;    
+
                     .collect-icone {
                         margin-right: 20px;
 
