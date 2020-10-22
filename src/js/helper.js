@@ -6,7 +6,7 @@ export function formatDatas(device, action, activity) {
 }
 
 export function getUrlWebsocketServer() {
-    const ip = '172.17.128.112';
+    const ip = '172.17.128.153';
     const port = '8888';
 
     return `${ip}:${port}`;
