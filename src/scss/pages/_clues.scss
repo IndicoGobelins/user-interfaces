@@ -39,7 +39,7 @@
                     transform: translate(-50%, 0);
 
                     img {
-                        transform: rotate(90deg);
+                        transform: rotate(90deg) translate(-5px, 0px);
                     }
                 }
     
@@ -49,13 +49,17 @@
                     transform: translate(-50%, 0);
 
                     img {
-                        transform: rotate(-90deg);
+                        transform: rotate(-90deg) translate(-5px, 0px);
                     }
                 }
     
                 &#left {
                     top: 50%;
                     transform: translate(0, -50%);
+
+                    img {
+                        transform: translate(-5px, 0px);
+                    }
                 }
     
                 &#right {
@@ -64,7 +68,7 @@
                     right: 0;
 
                     img {
-                        transform: rotate(180deg);
+                        transform: rotate(180deg) translate(-5px, 0px);
                     }
                 }
             }
@@ -105,7 +109,7 @@
                     
                     &:not(.active) {
                         box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
-                        background-color: $vibrant-blue-60;
+                        background-color: $royal;
                     }
         
                     &.active {
@@ -122,6 +126,7 @@
 
                     &.isUnactive {
                         opacity: 0.3;
+                        font-weight: normal;
                     }
                 }
             }
@@ -180,8 +185,7 @@
                 &#collect {
                     align-items: center;
                     display: flex;
-                    // bottom: 0;
-                    width: fit-content;
+                    box-sizing: border-box;
                     padding: 30px 40px;
                     border-radius: 50px;
                     font-size: $font-size;
