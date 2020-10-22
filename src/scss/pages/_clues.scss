@@ -1,210 +1,212 @@
-.content {
-    display: flex;
-    height: 80vh;
-    padding: 10vh 10px;
-
-    .directionContainer {
-        flex: 1;
-        position: relative;
-    
-        // centrer horizontalement
+div[data-namespace="clues"] {
+    .content {
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    
-        .btnActionContainer {
-            width: $direction-btn-container-size;
-            height: $direction-btn-container-size;
+        height: 80vh;
+        padding: 10vh 10px;
+
+        .directionContainer {
+            flex: 1;
             position: relative;
-    
-            .btn-action {
-                background-color: $royal;
-                border-radius: 50%;
-                border: none;
-                height: $diretion-btn-size;
-                width: $diretion-btn-size;
-                position: absolute;
-                box-shadow: $direction-btn-box-shadow;
 
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                img {
-                    height: $arrow-height;
-                }
-    
-                &#forward {
-                    left: 50%;
-                    transform: translate(-50%, 0);
-
-                    img {
-                        transform: rotate(90deg) translate(-5px, 0px);
-                    }
-                }
-    
-                &#backward {
-                    bottom: 0;
-                    left: 50%;
-                    transform: translate(-50%, 0);
-
-                    img {
-                        transform: rotate(-90deg) translate(-5px, 0px);
-                    }
-                }
-    
-                &#left {
-                    top: 50%;
-                    transform: translate(0, -50%);
-
-                    img {
-                        transform: translate(-5px, 0px);
-                    }
-                }
-    
-                &#right {
-                    top: 50%;
-                    transform: translate(0, -50%);
-                    right: 0;
-
-                    img {
-                        transform: rotate(180deg) translate(-5px, 0px);
-                    }
-                }
-            }
-        }
-    }
-
-    .middleContainer {
-        flex: 1;
-        position: relative;
-        display: flex;
-        justify-content: center;
-
-        .logoContainer, .logoContainer img {
-            width: $logo-width;
-        }
-
-        .radioContainer {
-            width: 70%;
-            position: absolute;
-            bottom: 0;
+            // centrer horizontalement
             display: flex;
-            justify-content:  center;
-        
-            .radioComponent {
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                align-items: center;
-                height: $radio-component-height;
-                font-size: $font-size;
-        
-                .radioInput {
-                    height: $radio-button-size;
-                    width: $radio-button-size;
-                    border: none;
-                    border-radius: 50%;
-                    background-color: transparent;
-                    
-                    &:not(.active) {
-                        box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
-                        background-color: $royal;
-                    }
-        
-                    &.active {
-                        box-shadow: inset 1px 1px 6px 0 #14141e, inset -1px -1px 6px 0 #152eee;
-                        background-color: $blue-blue;
-                    }
-                }
-        
-                .radioLabel {
-                    position: absolute;
-                    bottom: 0;
-                    font-size: 13px;
-                    font-weight: bold;
+            justify-content: flex-end;
+            align-items: center;
 
-                    &.isUnactive {
-                        opacity: 0.3;
-                        font-weight: normal;
+            .btnActionContainer {
+                width: $direction-btn-container-size;
+                height: $direction-btn-container-size;
+                position: relative;
+
+                .btn-action {
+                    background-color: $royal;
+                    border-radius: 50%;
+                    border: none;
+                    height: $diretion-btn-size;
+                    width: $diretion-btn-size;
+                    position: absolute;
+                    box-shadow: $direction-btn-box-shadow;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        height: $arrow-height;
+                    }
+
+                    &#forward {
+                        left: 50%;
+                        transform: translate(-50%, 0);
+
+                        img {
+                            transform: rotate(90deg) translate(-5px, 0px);
+                        }
+                    }
+
+                    &#backward {
+                        bottom: 0;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+
+                        img {
+                            transform: rotate(-90deg) translate(-5px, 0px);
+                        }
+                    }
+
+                    &#left {
+                        top: 50%;
+                        transform: translate(0, -50%);
+
+                        img {
+                            transform: translate(-5px, 0px);
+                        }
+                    }
+
+                    &#right {
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        right: 0;
+
+                        img {
+                            transform: rotate(180deg) translate(-5px, 0px);
+                        }
                     }
                 }
             }
         }
 
-    }
-
-    .collectContainer {
-        flex: 1;
-        position: relative;
-        
-        // centrer horizontalement
-        display: flex;
-        align-items: center;
-    
-        .collectActionContainer {
-            height: $collect-container-height;
-            width: $collect-container-width;
+        .middleContainer {
+            flex: 1;
             position: relative;
-    
-            .collectElement {
+            display: flex;
+            justify-content: center;
+
+            .logoContainer, .logoContainer img {
+                width: $logo-width;
+            }
+
+            .radioContainer {
+                width: 70%;
                 position: absolute;
-    
-                &#echantilon {
-                    top: 0;
+                bottom: 0;
+                display: flex;
+                justify-content:  center;
+
+                .radioComponent {
                     display: flex;
-                    width: 100%;
+                    flex-direction: column;
+                    width: 50%;
+                    align-items: center;
+                    height: $radio-component-height;
                     font-size: $font-size;
-                    display: none;
-    
-                    #iconeEchantillon {
+
+                    .radioInput {
+                        height: $radio-button-size;
+                        width: $radio-button-size;
+                        border: none;
                         border-radius: 50%;
-                        border: 1px solid $pale-lilac;
-                        height: 15px;
-                        width: 15px;
-                        margin-right: 10px;
-    
-                        &:after {
-                            content: "✔";
-                            display: none;
-                            color: $royal;
+                        background-color: transparent;
+
+                        &:not(.active) {
+                            box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
+                            background-color: $royal;
                         }
 
-                        &.isPlain {
-                            background-color: $pale-lilac;
-        
+                        &.active {
+                            box-shadow: inset 1px 1px 6px 0 #14141e, inset -1px -1px 6px 0 #152eee;
+                            background-color: $blue-blue;
+                        }
+                    }
+
+                    .radioLabel {
+                        position: absolute;
+                        bottom: 0;
+                        font-size: 13px;
+                        font-weight: bold;
+
+                        &.isUnactive {
+                            opacity: 0.3;
+                            font-weight: normal;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .collectContainer {
+            flex: 1;
+            position: relative;
+
+            // centrer horizontalement
+            display: flex;
+            align-items: center;
+
+            .collectActionContainer {
+                height: $collect-container-height;
+                width: $collect-container-width;
+                position: relative;
+
+                .collectElement {
+                    position: absolute;
+
+                    &#echantilon {
+                        top: 0;
+                        display: flex;
+                        width: 100%;
+                        font-size: $font-size;
+                        display: none;
+
+                        #iconeEchantillon {
+                            border-radius: 50%;
+                            border: 1px solid $pale-lilac;
+                            height: 15px;
+                            width: 15px;
+                            margin-right: 10px;
+
                             &:after {
-                                display: block;
+                                content: "✔";
+                                display: none;
+                                color: $royal;
+                            }
+
+                            &.isPlain {
+                                background-color: $pale-lilac;
+
+                                &:after {
+                                    display: block;
+                                }
+                            }
+                        }
+
+
+                    }
+
+                    &#collect {
+                        align-items: center;
+                        display: flex;
+                        // bottom: 0;
+                        box-sizing: border-box;
+                        padding: 30px 40px;
+                        border-radius: 50px;
+                        font-size: $font-size;
+                        border: none;
+                        color: $white;
+                        background-color: $royal;
+                        box-shadow: $direction-btn-box-shadow;
+
+                        .collect-icone {
+                            margin-right: 20px;
+
+                            img {
+                                width: $collect-icone-width;
                             }
                         }
                     }
-    
-                    
                 }
-        
-                &#collect {
-                    align-items: center;
-                    display: flex;
-                    // bottom: 0;
-                    box-sizing: border-box;
-                    padding: 30px 40px;
-                    border-radius: 50px;
-                    font-size: $font-size;
-                    border: none;
-                    color: $white;
-                    background-color: $royal;
-                    box-shadow: $direction-btn-box-shadow;    
 
-                    .collect-icone {
-                        margin-right: 20px;
-
-                        img {
-                            width: $collect-icone-width;
-                        }
-                    }
-                }
             }
-    
         }
     }
 }

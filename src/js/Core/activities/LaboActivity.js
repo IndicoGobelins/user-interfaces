@@ -1,32 +1,36 @@
+import Activity from "./Activity";
 import io from "socket.io-client";
-import * as helpers from "./helper";
-import {ACTION, ACTIVITY, DEVICE, EVENT} from "./constants";
+import * as helpers from "../../helper";
+import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
 
-class Application {
-    constructor() {
-        this._initElements();
-        this._initWebSocketConnection();
+export default class LaboActivity extends Activity {
+    getTemplate() {
+        return 'labo-activity.tpl.html'
     }
 
-    _initElements() {
+    initElements() {
+        super.initElements();
         this.launchButton = document.getElementById('launchButton');
         this.loadBar = document.getElementById('loadBar');
-        this.socketClient = io(helpers.getUrlWebsocketServer());
         this.LOADING_DURATION = 20000;
         this.loadingTimer = null;
     }
 
-    _initWebSocketConnection() {
-        this.socketClient.on('connect', () => {
-            this._initButtonsEvents()
-        });
+    initEvents() {
+        super.initEvents();
+        this._initButtonsEvents();
+    }
+
+    launch() {
+        super.launch();
+        console.log('labo activity launched');
     }
 
     _initButtonsEvents() {
         this.launchButton.addEventListener('click', () => {
             console.log('click on launchButton');
             this._startLoading();
-            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
+            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
         });
     }
 
@@ -56,9 +60,3 @@ class Application {
         this.launchButton.style.display = 'none';
     }
 }
-
-// Build application when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', (event) => {
-    const App = new Application();
-    console.log("coucou")
-});
