@@ -12,7 +12,7 @@ class Application {
         this.launchButton = document.getElementById('launchButton');
         this.loadBar = document.getElementById('loadBar');
         this.socketClient = io(helpers.getUrlWebsocketServer());
-        this.LOADING_DURATION = 5000;
+        this.LOADING_DURATION = 20000;
         this.loadingTimer = null;
     }
 
@@ -26,7 +26,7 @@ class Application {
         this.launchButton.addEventListener('click', () => {
             console.log('click on launchButton');
             this._startLoading();
-            this.socketClient.emit(EVENT.TEST, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
         });
     }
 

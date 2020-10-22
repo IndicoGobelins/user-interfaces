@@ -181,7 +181,7 @@
                     align-items: center;
                     display: flex;
                     // bottom: 0;
-                    width: fit-content;
+                    box-sizing: border-box;
                     padding: 30px 40px;
                     border-radius: 50px;
                     font-size: $font-size;

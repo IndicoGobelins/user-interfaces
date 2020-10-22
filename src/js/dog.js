@@ -30,12 +30,12 @@ class Application {
     _initButtonsEvents() {
         this.standUpButton.addEventListener('click', () => {
             console.log("standup clicked");
-            this.socketClient.emit(EVENT.TEST, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
         });
 
         this.searchButton.addEventListener("click", () => {
             console.log("search clicked");
-            this.socketClient.emit(EVENT.TEST, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
+            this.socketClient.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
         });
     }
 }
