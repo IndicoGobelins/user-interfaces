@@ -1,12 +1,51 @@
-<div data-namespace="labo">
-    <div class="wrapper">
-        <img id="logo" src="img/logo-old.svg" alt="">
-        <img id="rotation" src="./img/labo-rotation.svg" alt="">
-        <p>Avant l’analyse, veillez à déposer 5 gouttes de réactif dans la protection de l’échantillon.</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>labo</title>
+</head>
+<body>
 
-        <button id="launchButton">Lancer analyse</button>
-        <div id="loadBarContainer">
-            <div id="loadBar"></div>
+
+<div data-namespace="labo">
+
+    <img id="logo" src="../img/logo.svg" alt="">
+
+    <div class="wrapper">
+        
+        <div class="iconeContainer">
+            <img id="rotation" src="../img/labo-rotation.svg" alt="">
         </div>
+
+        <div class="contentContainer">
+
+            <div class="descriptionContainer">
+
+                <div class="description">
+                    <h1>Avant l'analyse</h1>
+                    <p>Déposez 5 gouttes de réactif dans la protection de l'échantillon.</p>
+                </div>
+
+                <div class="analyseContainer">
+                    <button id="launchButton">Lancer analyse</button>
+
+                    <div id="loadBarContainer">
+                        <div id="loadBar"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </div>
+
+
+
+</body>
+</html>

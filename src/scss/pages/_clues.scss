@@ -109,12 +109,12 @@ div[data-namespace="clues"] {
                         background-color: transparent;
 
                         &:not(.active) {
-                            box-shadow: 1px 2px 8px 0 #14141e, -1px -2px 8px 0 #152eee, inset -1px -1px 1px 0 rgba(20, 20, 30, 0.2), inset 1px 1px 1px 0 rgba(14, 29, 242, 0.5);
+                            box-shadow: $box-shadow-royal;
                             background-color: $royal;
                         }
 
                         &.active {
-                            box-shadow: inset 1px 1px 6px 0 #14141e, inset -1px -1px 6px 0 #152eee;
+                            box-shadow: $box-sahdow-light;
                             background-color: $blue-blue;
                         }
                     }
@@ -188,7 +188,7 @@ div[data-namespace="clues"] {
                         display: flex;
                         // bottom: 0;
                         box-sizing: border-box;
-                        padding: 30px 40px;
+                        padding: $button-padding;
                         border-radius: 50px;
                         font-size: $font-size;
                         border: none;

@@ -1,44 +1,103 @@
 div[data-namespace="dog"] {
     background-color: $royal;
 
+    display: flex;
+    justify-content: center;
+    padding: 10vh 10px;
+
+    img#logo {
+        width: 130px;
+        position: absolute;
+    }
+
     .wrapper {
-        max-width: 414px;
-        margin: 0 auto;
-        height: 100vh;
+        width: 100vw;
+        height: 70vh;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
+        margin-top: 10vh;
 
-        img#logo {
-            margin-top: 90px;
-            width: 130px;
-        }
-
-        div {
+        .iconeContainer {
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
 
-            button {
-                border: none;
+            div {
                 display: flex;
-                border-radius: 35px;
-                align-items: center;
-                padding: 25px 30px;
-                background-color: $blue-blue;
                 justify-content: center;
-                margin-bottom: 20px;
-                font-size: 20px;
-            ;
+                height: 215px;
+                position: relative;
+                width: $dog-icone-height;
+
                 img {
-                    width: 35px;
-                    margin-right: 15px;
+                    position: absolute;
+                    height: $dog-icone-height;
                 }
-                span {
-                    color: $white;
-                    text-transform: uppercase;
+
+                .description {
+                    position: absolute;
+                    bottom: 6vh;
+                    text-align: center;
+                    background: $blue-blue;
+                    box-shadow: $box-sahdow-light;
+                    padding: 20px;
+                    height: fit-content;
+                    width: 100%;
+                    font-size: 17pt;
                 }
             }
+
+            
+        }
+
+        .buttonsContainer {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+
+            div {
+                height: 200px;
+                width: 250px;
+                position: relative;
+
+                button {
+                    border: none;
+                    display: flex;
+                    border-radius: 50px;
+                    align-items: center;
+                    padding: $button-padding;
+                    background-color: $royal;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                    font-size: $font-size;
+                    position: absolute;
+                    width: 100%;
+                    box-shadow: $direction-btn-box-shadow;
+    
+                    &#standupButton {
+                        top: 0;
+                    }
+    
+                    &#searchButton {
+                        bottom: 0;
+                    }
+    
+                    img {
+                        width: 35px;
+                        margin-right: 15px;
+                        max-height: 25px;
+                    }
+                    span {
+                        color: $white;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            
         }
     }
 }
