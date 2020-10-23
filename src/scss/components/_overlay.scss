@@ -1,0 +1,21 @@
+div#activity-overlay {
+    background-color: $blue-blue;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+    width: 0;
+    overflow: hidden;
+    transition: width .9s linear;
+
+    div {
+        display: flex;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+        img {
+            width: 200px;
+        }
+    }
+}
