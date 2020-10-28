@@ -1,59 +1,172 @@
 div[data-namespace="labo"] {
     background-color: $royal;
 
+    display: flex;
+    justify-content: center;
+    padding: 10vh 10px;
+
+    img#logo{
+        width: $logo-width;
+        position: absolute;
+    }
+
     div.wrapper {
-        max-width: 414px;
-        margin: 0 auto;
+        width: 100vw;
+        height: 70vh;
         display: flex;
-        box-sizing: border-box;
-        flex-direction: column;
         justify-content: space-between;
-        padding-top: 50px;
+        align-items: center;
+        margin-top: 10vh;
 
-        img#logo{
-            margin: 0 auto;
-            width: $logo-width;
-            padding-bottom: 50px;
+        .iconeContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+
+            img#rotation {
+                width: 170px;
+                margin: 0 auto;
+            }
         }
 
-        img#rotation {
-            width: 200px;
-            margin: 0 auto;
-        }
+        .contentContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
 
-        p {
-            margin: 0 auto;
-            text-align: center;
-            width: 240px;
-            color: $white;
-            padding: 60px 0px;
-            font-size: 20px;
-        }
+            .stape1 {
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                height: 180px;
+                width: 290px;
 
-        button {
-            display: inline;
-            width: 250px;
-            height: 80px;
-            color: $white;
-            background-color: $blue-blue;
-            border-radius: 40px;
-            margin: 0 auto;
-            font-size: 24px;
-            border: none;
-        }
+                .description {
+                    position: absolute;
+                    top: 0;
 
-        #loadBarContainer {
-            height: 20px;
-            width: 300px;
-            margin: 0 auto;
-            overflow: hidden;
+                    #title {
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 1vh;
+                    }
+    
+                    p {
+                        text-align: center;
+                        color: $white;
+                        font-size: $font-size;
+                        font-weight: lighter;
+                    }
+                }
+    
+                .analyseContainer {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+    
+                    button {
+                        display: inline;
+                        color: $white;
+                        background-color: $royal;
+                        border-radius: 40px;
+                        box-shadow: $box-shadow-royal;
+                        font-size: $font-size;
+                        border: none;
+                        padding: $button-padding;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
 
-            #loadBar {
-                background-color: $white;
-                border-radius: 10px;
-                height: 100%;
-                width: 0%;
-                transition: width 1s linear, background-color .5s ease-out;
+                        img {
+                            width: $button-image-width;
+                            margin-right: $button-margin-right;
+                        }
+                    }
+                }
+            }
+
+            .stape2 {
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                height: 110px;
+                width: 290px;
+                flex-direction: column;
+
+                display: none;
+
+                .titleContainer {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    background: $blue-blue;
+                    box-shadow: $box-sahdow-light;
+                    height: 80px;
+                    border-radius: 15px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .loadbarContainer {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+
+                    #loadBarContainer {
+                        height: 10px;
+                        width: 100%;
+                        margin: 0 auto;
+                        overflow: hidden;
+                        background: $grey-20;
+                        border-radius: 10px;
+            
+                        #loadBar {
+                            background-color: $white;
+                            border-radius: 10px;
+                            height: 100%;
+                            width: 0%;
+                            transition: width 1s linear, background-color .5s ease-out;
+                        }
+                    }
+                }
+            }
+
+            .stape3 {
+                display: flex;
+                position: relative;
+                justify-content: center;
+                height: 80px;
+                width: 300px;
+                font-size: $font-size;
+
+                display: none;
+
+                .title {
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    font-weight: bold;
+
+                    img {
+                        height: 20px;
+                        margin-right: 10px;
+                    }
+                }
+
+                .text {
+                    position: absolute;
+                    bottom: 0;
+
+                    p{
+                        text-align: center;
+                    }
+                }
             }
         }
     }

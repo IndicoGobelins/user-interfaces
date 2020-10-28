@@ -1,12 +1,54 @@
-<div data-namespace="labo">
-    <div class="wrapper">
-        <img id="logo" src="img/logo-old.svg" alt="">
-        <img id="rotation" src="./img/labo-rotation.svg" alt="">
-        <p>Avant l’analyse, veillez à déposer 5 gouttes de réactif dans la protection de l’échantillon.</p>
 
-        <button id="launchButton">Lancer analyse</button>
-        <div id="loadBarContainer">
-            <div id="loadBar"></div>
+
+<div data-namespace="labo">
+
+    <img id="logo" src="../img/logo.svg" alt="">
+
+    <div class="wrapper">
+        
+        <div class="iconeContainer">
+            <img id="rotation" src="../img/labo-icone.svg" alt="">
         </div>
+
+        <div class="contentContainer">
+
+            <div class="stape1">
+
+                <div class="description">
+                    <p id="title">Avant l'analyse</p>
+                    <p>Déposez 5 gouttes de réactif dans la protection de l'échantillon.</p>
+                </div>
+
+                <div class="analyseContainer">
+                    <button id="launchButton"> <img src="../img/labo-analyse.svg" alt="">LANCER ANALYSE</button>
+                </div>
+
+            </div>
+            
+            <div class="stape2">
+                <div class="titleContainer">
+                    <p>Analyse en cours</p>
+                </div>
+
+                <div class="loadbarContainer">
+                    <div id="loadBarContainer">
+                        <div id="loadBar"></div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="stape3">
+                <div class="title">
+                    <img src="../img/labo-end-analyse.svg">
+                    <p>Analyse terminée</p>
+                </div>
+                <div class="text">
+                    <p>Retirer les protections des échantillons pour traiter les résultats.</p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
