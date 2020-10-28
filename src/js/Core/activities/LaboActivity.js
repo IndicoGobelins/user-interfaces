@@ -14,6 +14,7 @@ export default class LaboActivity extends Activity {
         this.loadBar = document.getElementById('loadBar');
         this.LOADING_DURATION = 20000;
         this.loadingTimer = null;
+        this.currentStep = document.querySelector('.step1');
     }
 
     initEvents() {
@@ -26,9 +27,17 @@ export default class LaboActivity extends Activity {
         console.log('labo activity launched');
     }
 
+    _changeStep(targetStepNumber) {
+        let targetStep = document.querySelector('.step' + targetStepNumber);
+        this.currentStep.style.display = 'none';
+        targetStep.style.display = '';
+        this.currentStep = targetStep;
+    }
+
     _initButtonsEvents() {
         this.launchButton.addEventListener('click', () => {
             console.log('click on launchButton');
+            this._changeStep(2);
             this._startLoading();
             this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
         });

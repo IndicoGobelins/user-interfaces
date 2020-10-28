@@ -1,14 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>labo</title>
-</head>
-<body>
 
 
 <div data-namespace="labo">
@@ -18,34 +7,48 @@
     <div class="wrapper">
         
         <div class="iconeContainer">
-            <img id="rotation" src="../img/labo-rotation.svg" alt="">
+            <img id="rotation" src="../img/labo-icone.svg" alt="">
         </div>
 
         <div class="contentContainer">
 
-            <div class="descriptionContainer">
+            <div class="stape1">
 
                 <div class="description">
-                    <h1>Avant l'analyse</h1>
+                    <p id="title">Avant l'analyse</p>
                     <p>Déposez 5 gouttes de réactif dans la protection de l'échantillon.</p>
                 </div>
 
                 <div class="analyseContainer">
-                    <button id="launchButton">Lancer analyse</button>
+                    <button id="launchButton"> <img src="../img/labo-analyse.svg" alt="">LANCER ANALYSE</button>
+                </div>
 
+            </div>
+            
+            <div class="stape2">
+                <div class="titleContainer">
+                    <p>Analyse en cours</p>
+                </div>
+
+                <div class="loadbarContainer">
                     <div id="loadBarContainer">
                         <div id="loadBar"></div>
                     </div>
                 </div>
+                
+            </div>
 
+            <div class="stape3">
+                <div class="title">
+                    <img src="../img/labo-end-analyse.svg">
+                    <p>Analyse terminée</p>
+                </div>
+                <div class="text">
+                    <p>Retirer les protections des échantillons pour traiter les résultats.</p>
+                </div>
             </div>
 
         </div>
 
     </div>
 </div>
-
-
-
-</body>
-</html>

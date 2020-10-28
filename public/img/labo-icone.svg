@@ -1,0 +1,56 @@
+<svg width="424" height="412" viewBox="0 0 424 412" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<g id="Group 7">
+<g id="Group 3">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="210" y="205" width="196" height="169">
+<path id="Clip 2" fill-rule="evenodd" clip-rule="evenodd" d="M210.934 205.93H405.968V373.988H210.934V205.93Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<path id="Fill 1" fill-rule="evenodd" clip-rule="evenodd" d="M405.195 234.72L383.627 207.535C382.095 205.605 379.248 205.381 377.437 207.051L351.919 230.554C350.47 231.888 350.376 234.146 351.708 235.595C353.04 237.049 355.298 237.143 356.749 235.808L376.674 217.447C373.43 257.1 355.954 293.9 327.051 321.612C296.656 350.753 256.739 366.819 214.641 366.854C212.914 366.855 211.33 368.012 211.003 369.71C210.562 371.993 212.298 373.988 214.498 373.988C258.495 373.988 300.218 357.216 331.981 326.764C361.892 298.085 380.083 260.079 383.691 219.088L399.608 239.158C400.834 240.704 403.079 240.962 404.622 239.734C406.162 238.508 406.418 236.263 405.195 234.72Z" fill="white"/>
+</g>
+</g>
+<g id="Group 6">
+<mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="22" y="34" width="196" height="173">
+<path id="Clip 5" fill-rule="evenodd" clip-rule="evenodd" d="M22 34H217.818V206.39H22V34Z" fill="white"/>
+</mask>
+<g mask="url(#mask1)">
+<path id="Fill 4" fill-rule="evenodd" clip-rule="evenodd" d="M214.027 34C169.326 34.0582 127.151 51.3273 95.2486 82.6434C65.0929 112.245 47.3146 151.246 44.7032 193.134C44.702 193.167 44.6616 193.18 44.6414 193.155L28.3054 173.585C27.0425 172.072 24.7911 171.87 23.2787 173.134C21.7687 174.398 21.5667 176.647 22.8296 178.158L45.1903 204.933C46.7004 206.743 49.4294 206.888 51.1248 205.25L76.2014 181.005C77.6164 179.637 77.6556 177.382 76.2881 175.964C74.9195 174.546 72.6598 174.506 71.2424 175.878L51.821 194.663C51.7972 194.685 51.7568 194.666 51.758 194.634C54.026 154.106 71.0998 116.338 100.242 87.7321C130.858 57.6801 171.347 41.1286 214.253 41.1286C216.273 41.1286 217.9 39.4487 217.815 37.4099C217.733 35.4649 215.973 33.9976 214.027 34Z" fill="white"/>
+</g>
+</g>
+</g>
+<g id="noun_north_952291">
+<circle id="Oval" cx="332" cy="92" r="89" stroke="white" stroke-width="6"/>
+</g>
+<g id="noun_north_952291 copy">
+<circle id="Oval_2" cx="92" cy="320" r="89" stroke="white" stroke-width="6"/>
+</g>
+<g id="Rectangle" filter="url(#filter0_i)">
+<rect x="306" y="65" width="53" height="54" fill="#DAD9FF"/>
+</g>
+<g id="Rectangle Copy" filter="url(#filter1_i)">
+<rect x="66" y="293" width="53" height="54" fill="#DAD9FF"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_i" x="306" y="65" width="56" height="57" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="3" dy="3"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0784314 0 0 0 0 0.0784314 0 0 0 0 0.117647 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+</filter>
+<filter id="filter1_i" x="66" y="293" width="56" height="57" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="3" dy="3"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0784314 0 0 0 0 0.0784314 0 0 0 0 0.117647 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+</filter>
+</defs>
+</svg>

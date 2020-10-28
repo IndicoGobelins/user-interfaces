@@ -86,8 +86,8 @@ div[data-namespace="dog"] {
                     }
     
                     img {
-                        width: 35px;
-                        margin-right: 15px;
+                        width: $button-image-width;
+                        margin-right: $button-margin-right;
                         max-height: 25px;
                     }
                     span {
