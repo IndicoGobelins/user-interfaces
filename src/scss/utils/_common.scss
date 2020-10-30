@@ -103,3 +103,33 @@ img.logo {
         }
     }
 }
+
+// Dash line
+hr.dash-line {
+    position: absolute;
+    border: 0 none;
+    border-top: 2px dashed $white;
+    background: none;
+    height:0;
+    width: 110px;
+    left: 0;
+    transform: translate(-100%, -50%);
+    overflow: unset;
+    margin: 0;
+    display: block;
+    top: 50%;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        display: block;
+        border-radius: 50%;
+        z-index: 3;
+    }
+}

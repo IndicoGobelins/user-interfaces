@@ -34,6 +34,7 @@ export default class ClueActivity extends Activity {
             left: document.getElementById('joystick-button-left'),
             bottom: document.getElementById('joystick-button-bottom'),
             right: document.getElementById('joystick-button-right'),
+            container: document.getElementById('joystick-container')
         };
         /* Collect button */
         this.collectButton = {
@@ -68,10 +69,7 @@ export default class ClueActivity extends Activity {
         });
 
         this.comeBackSampleOverlay.button.addEventListener('click', () => {
-            this.comeBackSampleOverlay.element.style.opacity = '0';
-            setTimeout(() => {
-                this.comeBackSampleOverlay.element.style.display = 'none';
-            }, 600);
+            this.comeBackSampleOverlay.element.classList.remove('isShown');
         });
     }
 
@@ -104,6 +102,7 @@ export default class ClueActivity extends Activity {
             console.log(joystick);
             joystick.addEventListener('touchend', () => {
                 console.log(`Stop ${this._getTargetSphero()}`);
+                this.joysticks.container.classList.remove('isTop', 'isLeft', 'isBottom', 'isRight');
                 this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE));
             });
         }
@@ -112,21 +111,25 @@ export default class ClueActivity extends Activity {
         this.joysticks.top.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Forward ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isTop');
             this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE));
         });
         this.joysticks.left.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Left ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isLeft');
             this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE));
         });
         this.joysticks.bottom.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Bottom ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isBottom');
             this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE));
         });
         this.joysticks.right.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Right ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isRight');
             this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE));
         });
     }
@@ -139,7 +142,7 @@ export default class ClueActivity extends Activity {
             this._disableCollectButton(true)
                 .then(() => {
                     if (!this.isSampleBackOverlayAlreadyDisplayed) {
-                        this.comeBackSampleOverlay.element.style.display = 'block';
+                        this.comeBackSampleOverlay.element.classList.add('isShown')
                         this.isSampleBackOverlayAlreadyDisplayed = true;
                     }
                 })

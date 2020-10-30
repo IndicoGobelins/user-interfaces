@@ -22,10 +22,10 @@ class Application {
         const WsRouter = new Router(this.socketClient);
 
         WsRouter
+            .on(ACTIVITY.CLUE, ClueActivity)
             .on(ACTIVITY.LABO_ACTIVITY, LaboActivity)
             .on(ACTIVITY.DOG, DogActivity)
-            .on(ACTIVITY.CLUE, ClueActivity)
-            .init();
+            .init(ClueActivity);
     }
 }
 // Build application when the DOM is fully loaded
