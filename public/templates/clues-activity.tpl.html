@@ -1,49 +1,51 @@
-<div data-namespace="clues">
-    <div class="content">
-        <div class="directionContainer">
-
-            <div class="btnActionContainer">
-                <button id="forward" class="btn-action"><img src="./img/arrow.svg"/></button>
-                <button id="backward" class="btn-action"><img src="./img/arrow.svg"/></button>
-                <button id="right" class="btn-action"><img src="./img/arrow.svg"/></button>
-                <button id="left" class="btn-action"><img src="./img/arrow.svg"/></button>
-            </div>
-
+<div class="activity" data-namespace="clues">
+    <!-- Instruction overlay -->
+    <div id="instruction-overlay">
+        <div>
+            <img src="../img/schema-sphero-position.svg" alt="">
         </div>
-
-        <div class="middleContainer">
-            <div class="logoContainer">
-                <img id="logo" src="img/logo.svg" alt="">
-            </div>
-            <div class="radioContainer">
-                <div class="radioComponent">
-                    <button id="SPHERO1" data-device="SPHERO1" class="radioInput active"></button>
-                    <label for="SPHERO1" class="radioLabel">Sphero 1</label>
-                </div>
-                <div class="radioComponent">
-                    <button id="SPHERO2" data-device="SPHERO2" class="radioInput"></button>
-                    <label for="SPHERO2" class="radioLabel isUnactive">Sphero 2</label>
-                </div>
-            </div>
+        <div>
+            <h2>Positionnement</h2>
+            <p>S'aligner avec l'échantillon pour avoir le même Nord.</p>
+            <button id="instruction-overlay-button">
+                <img src="../img/white-check.svg" alt="">
+                <span>En position</span>
+            </button>
         </div>
-
-        <div class="collectContainer">
-            <div class="collectActionContainer">
-
-                <div id="echantilon" class="collectElement">
-                    <div id="iconeEchantillon"></div>
-                    <p>Echantillon vide</p>
+    </div>
+    <!-- Come back sample overlay -->
+    <div id="come-back-sample-overlay">
+        <div id="come-back-sample-overlay-inner">
+            <div class="text-container">
+                <div>
+                    <img src="../img/arrow-come-back.svg" alt="">
+                    <span>Revenir</span>
                 </div>
-
-                <button id="collect" class="collectElement">
-                    <span class="collect-icone">
-                        <img src="./img/recolter.svg"/>
-                    </span>
-                    RECOLTER
-                </button>
-
+                <p>Ramener l'échantillon avant de prélever le deuxième</p>
+            </div>
+            <button id="come-back-sample-overlay-button">Ok</button>
+        </div>
+    </div>
+    <!-- Activity content -->
+    <div class="left">
+        <div class="joystick-container">
+            <div class="joystick-container-inner">
+                <button id="joystick-button-top" class="joystick-button"></button>
+                <button id="joystick-button-right" class="joystick-button"></button>
+                <button id="joystick-button-bottom" class="joystick-button"></button>
+                <button id="joystick-button-left" class="joystick-button"></button>
             </div>
         </div>
-
+    </div>
+    <div class="right">
+        <button id="collect-button">
+            <img id="collect-button-icon" src="../img/collect.svg" alt="">
+            <span id="collect-button-text">Récolter</span>
+            <span id="background-overlay"></span>
+        </button>
+        <div class="sample-container">
+            <div data-num="1" class="sample isSelected" id="first-sample">Échantillon 1</div>
+            <div data-num="2" class="sample" id="second-sample">Échantillon 2</div>
+        </div>
     </div>
 </div>

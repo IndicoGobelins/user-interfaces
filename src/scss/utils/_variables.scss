@@ -9,14 +9,7 @@ $grey-20: rgba(216,216,216, 0.2);
 $vibrant-blue-60: rgba(21, 46, 238, 0.6);
 
 $main-font: 'Gotham', sans-serif;
-
-$font-size: 18px;
-
-$logo-width: 150px;
-
-$button-padding: 25px 30px;
-$button-image-width: 35px;
-$button-margin-right: 15px;
+$second-font: 'GothamBook', sans-serif;
 
 $box-sahdow-light: inset 1px 1px 6px 0 #14141e, inset -1px -1px 6px 0 $blue-blue;
 $box-shadow-royal: 5px 2px 26px 0 #14141e, -5px -2px 26px 0 $blue-blue, inset -5px -2px 10px 0 rgba(20, 20, 30, 0.2), inset 5px 2px 10px 0 rgba(14, 29, 242, 0.5);
@@ -26,11 +19,7 @@ $diretion-btn-size: 90px;
 $direction-btn-container-size: 250px;
 $direction-btn-box-shadow: 5px 2px 26px 0 #14141e, -5px -2px 26px 0 $blue-blue, inset -5px -2px 10px 0 rgba(20, 20, 30, 0.2), inset 5px 2px 10px 0 rgba(14, 29, 242, 0.5);
 
-$radio-component-height: 70px;
-$radio-button-size: 40px;
+$gap-container: 20px;
 
-$collect-container-height: 90px;
-$collect-container-width: 210px;
-$collect-icone-width: 25px;
-
-$dog-icone-height: 150px;
+$corner-width: 2px;
+$corner-size: 15px;
