@@ -1,6 +1,7 @@
 export default class Activity {
-    constructor(webSocketConnection) {
+    constructor(webSocketConnection, router) {
         this.webSocketConnection = webSocketConnection;
+        this.router = router;
     }
 
     /**

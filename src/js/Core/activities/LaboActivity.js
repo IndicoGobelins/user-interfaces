@@ -41,7 +41,7 @@ export default class LaboActivity extends Activity {
     _initStep1Event() {
         this.laboContainers.step1.button.addEventListener('click', () => {
             /* Launch labo activity */
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.CLUE));
+            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
             this._changeStep('step2')
                 .then(() => {
                     this._handleStep2Animation(true);

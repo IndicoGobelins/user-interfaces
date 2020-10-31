@@ -27,5 +27,6 @@ export const ACTIVITY = {
 
 export const EVENT = {
     INDICO: 'INDICO',
-    TEST: 'TEST'
+    TEST: 'TEST',
+    SUSPECT_FOUND: 'SUSPECT_FOUND'
 };

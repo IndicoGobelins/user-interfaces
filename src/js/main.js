@@ -21,11 +21,13 @@ class Application {
         this.socketClient = io(helpers.getUrlWebsocketServer());
         const WsRouter = new Router(this.socketClient);
 
+
+        /* Declare activity router */
         WsRouter
             .on(ACTIVITY.CLUE, ClueActivity)
             .on(ACTIVITY.LABO_ACTIVITY, LaboActivity)
             .on(ACTIVITY.DOG, DogActivity)
-            .init(LaboActivity);
+            .init();
     }
 }
 // Build application when the DOM is fully loaded

@@ -1,5 +1,6 @@
 import DomManager from "../managers/DomManager";
 import Route from "./Route";
+import {EVENT} from "../../constants";
 
 export default class Router {
     constructor(webSocketClient) {
@@ -12,6 +13,7 @@ export default class Router {
          * @type {Route[]}
          */
         this.routes = [];
+        this.suspectFoundCallback = null;
     }
 
     on(event, activity) {
@@ -20,13 +22,23 @@ export default class Router {
         return this;
     }
 
+    onSuspectFound(callback) {
+        this.suspectFoundCallback = callback;
+    }
+
     init(testTargetActivity = null) {
+        /* Init activity routing */
         for (const route of this.routes) {
             this.webSocketClient.on(route.event, async () => {
                 console.log(route.event);
                 await this._displayActivity(route.activity);
             });
         }
+
+        /* Init independent events */
+        this.webSocketClient.on(EVENT.SUSPECT_FOUND, () => {
+            this.suspectFoundCallback();
+        });
 
         if (testTargetActivity) {
             this._displayActivity(testTargetActivity)
@@ -40,7 +52,7 @@ export default class Router {
     }
 
     async _displayActivity(activity) {
-        const Activity = new activity(this.webSocketClient);
+        const Activity = new activity(this.webSocketClient, this);
         const templateName = Activity.getTemplate();
         await DomManager.inject(templateName);
         Activity.launch();

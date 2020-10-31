@@ -1,3 +1,219 @@
 div[data-namespace="dog"] {
+    transition: opacity .5s linear;
+    display: flex;
+    justify-content: space-between;
+
+    &.isHidden {
+        opacity: 0;
+    }
+
+    .dog-container {
+        visibility: hidden;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        &.isActive {
+            visibility: visible;
+        }
+    }
+
+    .left {
+        flex: 1;
+        position: relative;
+
+        // Step 1 container
+        .dog-container.step1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div {
+                position: relative;
+
+                span {
+                    position: absolute;
+                    width: 200px;
+                    height: 53px;
+                    font-family: $main-font;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    box-shadow: inset -3px -3px 6px 0 #152EEE, inset 3px 3px 6px 0 #14141E;
+                    background-color: $blue-blue;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    bottom: -15px;
+                }
+            }
+        }
+        // Step 2 container
+        .dog-container.step2 {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+        }
+        // Step 3 container
+        .dog-container.step3 {
+            display: flex;
+            align-items: center;
+
+            .suspect-container {
+                width: 200px;
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px dashed $white;
+                margin-left: 75px;
+
+                span {
+                    font-size: 120px;
+                    font-family: $main-font;
+                    font-weight: 700;
+                    display: none;
+                }
+
+                &.isFound {
+                    img {
+                        display: none;
+                    }
+
+                    span {
+                        display: block;
+                    }
+                }
+            }
+        }
+        // Step 4 container
+        .dog-container.step4 {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+        }
+    }
+
+    .right {
+        flex: 1;
+        position: relative;
+
+        // Step 1 container
+        .dog-container.step1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 300px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 265px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+        // Step 2 container
+        .dog-container.step2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 260px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 265px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+        // Step 3 container
+        .dog-container.step3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &.positionMode {
+                button#button-position-step3 {
+                    visibility: visible;
+                    position: relative;
+                }
+            }
+
+            &.searchMode {
+                button#button-search-step3 {
+                    visibility: visible;
+                    position: relative;
+                }
+            }
+
+            .text-container {
+                text-align: center;
+                width: 340px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                margin-top: 26px;
+                position: absolute;
+                visibility: hidden;
+            }
+        }
+        // Step 4 container
+        .dog-container.step4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 328px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 262px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+    }
 
 }
