@@ -39,8 +39,8 @@ export default class ClueActivity extends Activity {
         /* Collect button */
         this.collectButton = {
             element: document.getElementById('collect-button'),
-            icon: document.getElementById('collect-button-icon'),
-            text: document.getElementById('collect-button-text'),
+            icon: document.querySelector('#collect-button .indico-button-icon'),
+            text: document.querySelector('#collect-button .indico-button-text'),
             backgroundOverlay: document.getElementById('background-overlay')
         };
         /* Configuration variables */

@@ -114,42 +114,8 @@ div[data-namespace="clues"] {
         justify-content: center;
         margin-right: 36px;
 
-        button {
-            width: 268px;
-            box-sizing: border-box;
-            border: 2px solid $white;
-            height: 94px;
-            display: flex;
-            background-color: $royal;
-            align-items: center;
-            justify-content: center;
+        button.indico-button {
             margin-top: 50px;
-            position: relative;
-            font-family: $main-font;
-            box-shadow: inset 5px 2px 5px 0 rgba(14,29,242,0.5), inset -5px -2px 5px 0 rgba(20,20,30,0.2), -5px -2px 10px 0 #152EEE, 5px 2px 10px 0 #14141E;;
-
-            &:disabled {
-                background-color: $blue-blue;
-                box-shadow: inset -2px -2px 3px 0 #152EEE, inset 2px 2px 3px 0 #14141E;
-                border: none;
-            }
-
-            img#collect-button-icon {
-                width: 30px;
-                height: 30px;
-                position: relative;
-                z-index: 2;
-            }
-
-            span#collect-button-text {
-                font-size: 20px;
-                line-height: 24px;
-                color: $white;
-                text-transform: uppercase;
-                margin-left: 26px;
-                position: relative;
-                z-index: 2;
-            }
 
             span#background-overlay {
                 position: absolute;

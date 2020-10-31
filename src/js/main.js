@@ -25,7 +25,7 @@ class Application {
             .on(ACTIVITY.CLUE, ClueActivity)
             .on(ACTIVITY.LABO_ACTIVITY, LaboActivity)
             .on(ACTIVITY.DOG, DogActivity)
-            .init(ClueActivity);
+            .init(LaboActivity);
     }
 }
 // Build application when the DOM is fully loaded

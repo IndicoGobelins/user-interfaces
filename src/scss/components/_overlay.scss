@@ -78,29 +78,7 @@ div#instruction-overlay {
             button {
                 width: 260px;
                 height: 75px;
-                background-color: transparent;
-                border: 2px solid $white;
-                color: $white;
                 margin-top: 42px;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                position: relative;
-
-                span {
-                    font-family: Gotham, sans-serif;
-                    font-weight: 500;
-                    font-size: 20px;
-                    line-height: 24px;
-                    display: block;
-                    text-transform: uppercase;
-                    margin-left: 16px;
-                }
-
-                img {
-                    width: 30px;
-                    height: 30px;
-                }
 
                 hr.dash-line {
                     width: 170px;
