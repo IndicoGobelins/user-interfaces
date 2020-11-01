@@ -70,13 +70,16 @@ export default class DogActivity extends Activity {
         this.dogContainers.step1.button.addEventListener('click', () => {
             /* Take off the drone */
             //this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
+            let onHiddingCallback = null;
 
             if (this.dogContainers.step1.nextStep === 'step3') {
-                this._resetSuspectContainer();
-                this._setSearchModeStep3();
+                onHiddingCallback = () => {
+                    this._resetSuspectContainer();
+                    this._setSearchModeStep3();
+                }
             }
 
-            this._changeStep(this.dogContainers.step1.nextStep);
+            this._changeStep(this.dogContainers.step1.nextStep, onHiddingCallback);
         });
     }
 
@@ -134,12 +137,19 @@ export default class DogActivity extends Activity {
     }
 
     // Helpers
-    _changeStep(stepNumber) {
+    _changeStep(stepNumber, onHiddingCallback = null) {
         /* Hide activity to change container step */
+        console.log('before hidding');
         this.activity.element.classList.add('isHidden');
+        console.log('after hidding');
         /* Hide all labo containers */
         return new Promise((resolve) => {
             setTimeout(() => {
+                console.log('before trigger callback');
+                if (onHiddingCallback) {
+                    onHiddingCallback();
+                }
+                console.log('after trigger callback');
                 for (const dogContainer of this.dogContainers.all) {
                     dogContainer.classList.remove('isActive');
                 }
