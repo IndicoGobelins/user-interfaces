@@ -5,6 +5,15 @@ import * as helpers from "../../helper";
 
 export default class ClueActivity extends Activity {
     initElements() {
+        /* Activity page */
+        this.activity = {
+            left: {
+                element: document.querySelector('div[data-namespace="clues"] .left')
+            },
+            right: {
+                element: document.querySelector('div[data-namespace="clues"] .right')
+            }
+        };
         /* Overlay */
         this.instructionOverlay = {
             element: document.getElementById('instruction-overlay'),
@@ -70,6 +79,8 @@ export default class ClueActivity extends Activity {
 
         this.comeBackSampleOverlay.button.addEventListener('click', () => {
             this.comeBackSampleOverlay.element.classList.remove('isShown');
+            this.activity.left.element.classList.remove('isBlur');
+            this.activity.right.element.classList.remove('isBlur');
         });
     }
 
@@ -142,7 +153,9 @@ export default class ClueActivity extends Activity {
             this._disableCollectButton(true)
                 .then(() => {
                     if (!this.isSampleBackOverlayAlreadyDisplayed) {
-                        this.comeBackSampleOverlay.element.classList.add('isShown')
+                        this.comeBackSampleOverlay.element.classList.add('isShown');
+                        this.activity.left.element.classList.add('isBlur');
+                        this.activity.right.element.classList.add('isBlur');
                         this.isSampleBackOverlayAlreadyDisplayed = true;
                     }
                 })
@@ -162,7 +175,7 @@ export default class ClueActivity extends Activity {
         const doAction = () => {
             this.collectButton.element.disabled = true;
             this.collectButton.icon.src = '../img/white-check.svg';
-            this.collectButton.text.innerText = 'Collecté';
+            this.collectButton.text.innerText = 'Prélevé';
         };
         this.collectButton.backgroundOverlay.style.width = '100%';
 

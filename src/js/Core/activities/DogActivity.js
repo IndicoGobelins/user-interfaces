@@ -1,7 +1,4 @@
 import Activity from "./Activity";
-import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
-import * as helpers from "../../helper";
-import Router from "../routes/Router";
 
 export default class DogActivity extends Activity {
     getTemplate() {
@@ -69,7 +66,7 @@ export default class DogActivity extends Activity {
     _initStep1Event() {
         this.dogContainers.step1.button.addEventListener('click', () => {
             /* Take off the drone */
-            //this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
             let onHiddingCallback = null;
 
             if (this.dogContainers.step1.nextStep === 'step3') {
@@ -86,7 +83,7 @@ export default class DogActivity extends Activity {
     _initStep2Event() {
         this.dogContainers.step2.button.addEventListener('click', () => {
             /* Take off the drone */
-            //this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
             this._changeStep('step3');
         });
     }
@@ -123,13 +120,19 @@ export default class DogActivity extends Activity {
             // In this situation we should be in step 3 interface
             if (this.searchCount === 1) {
                 this._displaySuspect();
-                this._setPositionModeStep3()
+                this._setPositionModeStep3();
+
+                // After 5 seconds, we change of step
+                setTimeout(() => {
+                    this.dogContainers.step3.rightSide.classList.remove('positionMode', 'searchMode');
+                    this._changeStep('step4');
+                }, 5000);
             }
 
             if (this.searchCount >= 2) {
                 // In this situation, we should be in the step 3 for the second time
                 this._displaySuspect();
-                this.dogContainers.step3.title.textContent = 'Conclusion';
+                this.dogContainers.step3.title.textContent = 'Trouvé !';
                 this.dogContainers.step3.description.textContent = 'Votre chien a identifié 2 fois le suspect, nous tenons le coupable !';
                 console.log('On redirige trois seconde après vers la page finale !')
             }
@@ -168,7 +171,7 @@ export default class DogActivity extends Activity {
     // Methods dynamic step3
     _setPositionModeStep3() {
         this.dogContainers.step3.rightSide.classList.remove('searchMode');
-        this.dogContainers.step3.rightSide.classList.add('positionMode');
+        //this.dogContainers.step3.rightSide.classList.add('positionMode');
         this.dogContainers.step3.title.textContent = 'Trouvé !';
         this.dogContainers.step3.description.textContent = 'Recommencer une seconde fois en changeant l\'ordre des pots.';
     }

@@ -15,7 +15,7 @@ div#activity-container {
 // Corners
 .corner {
     position: absolute;
-    z-index: 11;
+    z-index: 15;
 
     &:before {
         content: '';
@@ -76,7 +76,7 @@ div#activity-container {
 // Logo
 img.logo {
     position: absolute;
-    z-index: 9;
+    z-index: 15;
     width: 154px;
     right: 50px;
     top: 30px;
@@ -90,7 +90,7 @@ img.logo {
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
-    z-index: 10;
+    z-index: 15;
     span {
         background-color: $white;
         display: block;

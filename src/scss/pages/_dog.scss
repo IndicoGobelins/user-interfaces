@@ -2,6 +2,7 @@ div[data-namespace="dog"] {
     transition: opacity .5s linear;
     display: flex;
     justify-content: space-between;
+    padding: 0 0 0 50px;
 
     &.isHidden {
         opacity: 0;
@@ -29,8 +30,8 @@ div[data-namespace="dog"] {
         // Step 1 container
         .dog-container.step1 {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: flex-start;
 
             div {
                 position: relative;
@@ -55,12 +56,13 @@ div[data-namespace="dog"] {
         .dog-container.step2 {
             display: flex;
             align-items: center;
-            margin-left: 50px;
+            justify-content: flex-start;
         }
         // Step 3 container
         .dog-container.step3 {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
 
             .suspect-container {
                 width: 200px;
@@ -68,8 +70,12 @@ div[data-namespace="dog"] {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 2px dashed $white;
-                margin-left: 75px;
+                background-image: linear-gradient(90deg, $white 50%, transparent 50%), linear-gradient(90deg, $white 50%, transparent 50%), linear-gradient(0deg, $white 50%, transparent 50%), linear-gradient(0deg, $white 50%, transparent 50%);
+                background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+                background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+                background-position: left top, right bottom, left bottom, right top;
+                margin-left: 20px;
+                animation: border-animation 1s infinite linear;
 
                 span {
                     font-size: 120px;
@@ -79,6 +85,10 @@ div[data-namespace="dog"] {
                 }
 
                 &.isFound {
+                    animation: none !important;
+                    border: 2px solid $white;
+                    background: none;
+
                     img {
                         display: none;
                     }
@@ -93,7 +103,7 @@ div[data-namespace="dog"] {
         .dog-container.step4 {
             display: flex;
             align-items: center;
-            margin-left: 50px;
+            justify-content: flex-start;
         }
     }
 
@@ -135,7 +145,7 @@ div[data-namespace="dog"] {
 
             .text-container {
                 text-align: center;
-                width: 260px;
+                width: 330px;
                 font-size: 20px;
                 line-height: 27px;
 
@@ -156,7 +166,7 @@ div[data-namespace="dog"] {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
 
             &.positionMode {
                 button#button-position-step3 {
@@ -194,7 +204,7 @@ div[data-namespace="dog"] {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
 
             .text-container {
                 text-align: center;
@@ -216,4 +226,13 @@ div[data-namespace="dog"] {
         }
     }
 
+}
+
+@keyframes border-animation {
+    0% {
+        background-position: left top, right bottom, left bottom, right   top;
+    }
+    100% {
+        background-position: left 15px top, right 15px bottom , left bottom 15px , right   top 15px;
+    }
 }

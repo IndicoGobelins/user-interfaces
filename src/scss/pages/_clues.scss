@@ -2,10 +2,15 @@ div[data-namespace="clues"] {
     position: relative;
     display: flex;
     justify-content: space-between;
+    //padding: 0 40px;
 
     .left {
         display: flex;
         align-items: center;
+
+        &.isBlur {
+            filter: blur(8px);
+        }
 
         #joystick-container {
             width: 300px;
@@ -113,6 +118,10 @@ div[data-namespace="clues"] {
         flex-direction: column;
         justify-content: center;
         margin-right: 36px;
+
+        &.isBlur {
+            filter: blur(8px);
+        }
 
         button.indico-button {
             margin-top: 50px;
