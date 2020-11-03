@@ -1,6 +1,7 @@
 import DomManager from "../managers/DomManager";
 import Route from "./Route";
 import {EVENT} from "../../constants";
+import ActionManager from "../managers/ActionManager";
 
 export default class Router {
     constructor(webSocketClient) {

@@ -1,5 +1,9 @@
+import ActionManager from "../managers/ActionManager";
+
 export default class Activity {
     constructor(webSocketConnection, router) {
+        /* Init Action manager */
+        this.actionManager = new ActionManager(webSocketConnection);
         this.webSocketConnection = webSocketConnection;
         this.router = router;
     }

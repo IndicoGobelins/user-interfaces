@@ -114,7 +114,8 @@ export default class ClueActivity extends Activity {
             joystick.addEventListener('touchend', () => {
                 console.log(`Stop ${this._getTargetSphero()}`);
                 this.joysticks.container.classList.remove('isTop', 'isLeft', 'isBottom', 'isRight');
-                this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE));
+                this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE);
+                //this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE));
             });
         }
 
@@ -123,31 +124,36 @@ export default class ClueActivity extends Activity {
             e.preventDefault();
             console.log(`Forward ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isTop');
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE));
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE));
         });
         this.joysticks.left.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Left ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isLeft');
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE));
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE));
         });
         this.joysticks.bottom.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Bottom ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isBottom');
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE));
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE));
         });
         this.joysticks.right.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Right ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isRight');
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE));
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE));
         });
     }
 
     _initCollectButton() {
         this.collectButton.element.addEventListener('click', () => {
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE));
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE));
             this._getTargetSample().collected = true;
             /* Start collect button animation */
             this._disableCollectButton(true)

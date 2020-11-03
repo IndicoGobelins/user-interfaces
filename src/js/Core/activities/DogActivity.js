@@ -1,4 +1,5 @@
 import Activity from "./Activity";
+import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
 
 export default class DogActivity extends Activity {
     getTemplate() {
@@ -66,6 +67,7 @@ export default class DogActivity extends Activity {
     _initStep1Event() {
         this.dogContainers.step1.button.addEventListener('click', () => {
             /* Take off the drone */
+            this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG);
             // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
             let onHiddingCallback = null;
 
@@ -83,6 +85,7 @@ export default class DogActivity extends Activity {
     _initStep2Event() {
         this.dogContainers.step2.button.addEventListener('click', () => {
             /* Take off the drone */
+            this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG);
             // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
             this._changeStep('step3');
         });
