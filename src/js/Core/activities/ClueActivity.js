@@ -1,10 +1,15 @@
 import Activity from "./Activity";
 import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
 import * as helpers from "../../helper";
+import Breadcrumb from "../components/Breadcrumb";
 
 
 export default class ClueActivity extends Activity {
     initElements() {
+        /* Init Breadcrumb */
+        Breadcrumb.setFirstStep();
+        Breadcrumb.setBarWidth(33);
+        Breadcrumb.show();
         /* Activity page */
         this.activity = {
             left: {
@@ -55,6 +60,7 @@ export default class ClueActivity extends Activity {
         /* Configuration variables */
         this.isSampleBackOverlayAlreadyDisplayed = false;
         this.animationCollectButtonDuration = '3000' // ms
+        this.countCollect = 0;
     }
 
     initEvents() {
@@ -152,6 +158,14 @@ export default class ClueActivity extends Activity {
 
     _initCollectButton() {
         this.collectButton.element.addEventListener('click', () => {
+            this.countCollect++;
+
+            if (this.countCollect === 1) {
+                Breadcrumb.setBarWidth(66);
+            } else {
+                Breadcrumb.setBarWidth(100);
+            }
+
             this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE);
             // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE));
             this._getTargetSample().collected = true;

@@ -1,5 +1,6 @@
 import Activity from "./Activity";
 import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default class DogActivity extends Activity {
     getTemplate() {
@@ -7,6 +8,10 @@ export default class DogActivity extends Activity {
     }
 
     initElements() {
+        /* Init breadcrumb */
+        Breadcrumb.setThirdStep();
+        Breadcrumb.setBarWidth(14);
+        Breadcrumb.show();
         super.initElements();
         /* Activity page */
         this.activity = {
@@ -73,9 +78,12 @@ export default class DogActivity extends Activity {
 
             if (this.dogContainers.step1.nextStep === 'step3') {
                 onHiddingCallback = () => {
+                    Breadcrumb.setBarWidth(70);
                     this._resetSuspectContainer();
                     this._setSearchModeStep3();
                 }
+            } else {
+                Breadcrumb.setBarWidth(28);
             }
 
             this._changeStep(this.dogContainers.step1.nextStep, onHiddingCallback);
@@ -84,6 +92,7 @@ export default class DogActivity extends Activity {
 
     _initStep2Event() {
         this.dogContainers.step2.button.addEventListener('click', () => {
+            Breadcrumb.setBarWidth(42);
             /* Take off the drone */
             this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG);
             // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
@@ -99,6 +108,7 @@ export default class DogActivity extends Activity {
         });
         /* Init search button */
         this.dogContainers.step3.buttonSearch.element.addEventListener('click', () => {
+            Breadcrumb.setBarWidth(84);
             /* In this case, it is the second apparition of step 3. So, we need to remove position and search mode */
             this.dogContainers.step3.rightSide.classList.remove('positionMode', 'searchMode');
             this.dogContainers.step3.title.textContent = 'Attente';
@@ -122,6 +132,7 @@ export default class DogActivity extends Activity {
             console.log('Suspect found !', this.searchCount);
             // In this situation we should be in step 3 interface
             if (this.searchCount === 1) {
+                Breadcrumb.setBarWidth(56);
                 this._displaySuspect();
                 this._setPositionModeStep3();
 
@@ -133,6 +144,7 @@ export default class DogActivity extends Activity {
             }
 
             if (this.searchCount >= 2) {
+                Breadcrumb.setBarWidth(100);
                 // In this situation, we should be in the step 3 for the second time
                 this._displaySuspect();
                 this.dogContainers.step3.title.textContent = 'Trouvé !';

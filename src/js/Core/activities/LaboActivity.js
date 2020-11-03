@@ -1,6 +1,7 @@
 import Activity from "./Activity";
 import * as helpers from "../../helper";
 import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default class LaboActivity extends Activity {
     getTemplate() {
@@ -8,6 +9,10 @@ export default class LaboActivity extends Activity {
     }
 
     initElements() {
+        /* Init Breadcrumb */
+        Breadcrumb.setSecondStep();
+        Breadcrumb.setBarWidth(33);
+        Breadcrumb.show();
         /* Activity page */
         this.activity = {
             element: document.querySelector('div[data-namespace="labo"]'),
@@ -40,6 +45,7 @@ export default class LaboActivity extends Activity {
 
     _initStep1Event() {
         this.laboContainers.step1.button.addEventListener('click', () => {
+            Breadcrumb.setBarWidth(66);
             /* Launch labo activity */
             this.actionManager.emit(EVENT.INDICO, DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY);
             // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
@@ -52,6 +58,7 @@ export default class LaboActivity extends Activity {
                     return this._changeStep('step3');
                 })
                 .then(() => {
+                    Breadcrumb.setBarWidth(100);
                     this._handleStep2Animation(false);
                 })
 
