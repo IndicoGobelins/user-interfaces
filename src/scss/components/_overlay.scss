@@ -191,3 +191,34 @@ div#come-back-sample-overlay {
         }
     }
 }
+
+div#responsive-overlay {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    z-index: 40;
+    background-color: $royal;
+    font-size: 20px;
+
+    img:first-of-type {
+        margin-top: 40px;
+        margin-bottom: 140px;
+    }
+
+    img:nth-child(2) {
+        margin-bottom: 50px;
+    }
+
+    h1 {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    span {
+        font-weight: 300;
+        width: 300px;
+        text-align: center;
+        line-height: 24px;
+    }
+}
