@@ -73,7 +73,6 @@ export default class DogActivity extends Activity {
         this.dogContainers.step1.button.addEventListener('click', () => {
             /* Take off the drone */
             this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.STANDUP, ACTIVITY.DOG));
             let onHiddingCallback = null;
 
             if (this.dogContainers.step1.nextStep === 'step3') {
@@ -95,7 +94,6 @@ export default class DogActivity extends Activity {
             Breadcrumb.setBarWidth(42);
             /* Take off the drone */
             this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG));
             this._changeStep('step3');
         });
     }
@@ -108,6 +106,7 @@ export default class DogActivity extends Activity {
         });
         /* Init search button */
         this.dogContainers.step3.buttonSearch.element.addEventListener('click', () => {
+            this.actionManager.emit(EVENT.INDICO, DEVICE.DRONE, ACTION.SEARCH, ACTIVITY.DOG);
             Breadcrumb.setBarWidth(84);
             /* In this case, it is the second apparition of step 3. So, we need to remove position and search mode */
             this.dogContainers.step3.rightSide.classList.remove('positionMode', 'searchMode');

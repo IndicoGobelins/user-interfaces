@@ -48,7 +48,6 @@ export default class LaboActivity extends Activity {
             Breadcrumb.setBarWidth(66);
             /* Launch labo activity */
             this.actionManager.emit(EVENT.INDICO, DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(DEVICE.NONE, ACTION.START, ACTIVITY.LABO_ACTIVITY));
             this._changeStep('step2')
                 .then(() => {
                     this._handleStep2Animation(true);

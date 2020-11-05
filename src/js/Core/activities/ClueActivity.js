@@ -8,7 +8,7 @@ export default class ClueActivity extends Activity {
     initElements() {
         /* Init Breadcrumb */
         Breadcrumb.setFirstStep();
-        Breadcrumb.setBarWidth(33);
+        Breadcrumb.setBarWidth(25);
         Breadcrumb.show();
         /* Activity page */
         this.activity = {
@@ -77,6 +77,7 @@ export default class ClueActivity extends Activity {
 
     _initOverlayEvents() {
         this.instructionOverlay.button.addEventListener('click', () => {
+            Breadcrumb.setBarWidth(50);
             this.instructionOverlay.element.style.opacity = '0';
             setTimeout(() => {
                 this.instructionOverlay.element.style.display = 'none';
@@ -121,7 +122,6 @@ export default class ClueActivity extends Activity {
                 console.log(`Stop ${this._getTargetSphero()}`);
                 this.joysticks.container.classList.remove('isTop', 'isLeft', 'isBottom', 'isRight');
                 this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE);
-                //this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE));
             });
         }
 
@@ -138,21 +138,18 @@ export default class ClueActivity extends Activity {
             console.log(`Left ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isLeft');
             this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE));
         });
         this.joysticks.bottom.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Bottom ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isBottom');
             this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE));
         });
         this.joysticks.right.addEventListener('touchstart', (e) => {
             e.preventDefault();
             console.log(`Right ${this._getTargetSphero()}`);
             this.joysticks.container.classList.add('isRight');
             this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE));
         });
     }
 
@@ -161,13 +158,12 @@ export default class ClueActivity extends Activity {
             this.countCollect++;
 
             if (this.countCollect === 1) {
-                Breadcrumb.setBarWidth(66);
+                Breadcrumb.setBarWidth(75);
             } else {
                 Breadcrumb.setBarWidth(100);
             }
 
             this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE);
-            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE));
             this._getTargetSample().collected = true;
             /* Start collect button animation */
             this._disableCollectButton(true)

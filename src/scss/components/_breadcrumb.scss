@@ -1,6 +1,6 @@
 #breadcrumb {
     position: fixed;
-    z-index: 10;
+    z-index: 11;
     bottom: $gap-container;
     left: 50%;
     transform: translateX(-50%);
@@ -13,12 +13,12 @@
     }
 
     .breadcrumb-item {
-        margin: 0 10px;
+        margin: 5px;
     }
 
     .progress-bar {
-        width: 65px;
-        height: 11px;
+        width: 50px;
+        height: 8px;
         border-radius: 6px;
         border: 1px solid $white;
         position: relative;
@@ -37,7 +37,7 @@
 
         &-text {
             position: absolute;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 300;
             top: -25px;
             left: 50%;
@@ -46,7 +46,7 @@
     }
 
     .step-number {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
         color: white;
         opacity: 0.5;
