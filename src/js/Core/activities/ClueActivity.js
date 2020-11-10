@@ -1,44 +1,220 @@
 import Activity from "./Activity";
-import io from "socket.io-client";
-import * as helpers from "../../helper";
 import {ACTION, ACTIVITY, DEVICE, EVENT} from "../../constants";
+import * as helpers from "../../helper";
+import Breadcrumb from "../components/Breadcrumb";
+
 
 export default class ClueActivity extends Activity {
     initElements() {
-        super.initElements();
-        this.forwardButton = document.getElementById('forward');
-        this.backwardButton = document.getElementById('backward');
-        this.leftButton = document.getElementById('left');
-        this.rightButton = document.getElementById('right');
-        this.collectButton = document.getElementById('collect');
-        this.hasKeyPressed = false;
-
-        this.actionButtons = document.querySelectorAll(".btn-action");
-
-        this.collectIcone = document.getElementById("iconeEchantillon");
-
-        this.device1 = {
-            id: 'SPHERO1',
-            labelDom: document.getElementById('SPHERO1').labels[0],
-            dom: document.getElementById('SPHERO1'),
-            isChecked: true,
-            isCollected: false
+        /* Init Breadcrumb */
+        Breadcrumb.setFirstStep();
+        Breadcrumb.setBarWidth(25);
+        Breadcrumb.show();
+        /* Activity page */
+        this.activity = {
+            left: {
+                element: document.querySelector('div[data-namespace="clues"] .left')
+            },
+            right: {
+                element: document.querySelector('div[data-namespace="clues"] .right')
+            }
         };
-        this.device2 = {
-            id: 'SPHERO2',
-            labelDom: document.getElementById('SPHERO2').labels[0],
-            dom: document.getElementById('SPHERO2'),
-            isChecked: false,
-            isCollected: false
+        /* Overlay */
+        this.instructionOverlay = {
+            element: document.getElementById('instruction-overlay'),
+            button: document.getElementById('instruction-overlay-button')
         };
-        this.device = this._getCurrentDevice();
+        this.comeBackSampleOverlay = {
+            element: document.getElementById('come-back-sample-overlay'),
+            button: document.getElementById('come-back-sample-overlay-button')
+        };
+        /* Sample buttons */
+        this.samples = {
+            all: document.getElementsByClassName('sample'),
+            first: {
+                dom: document.getElementById('first-sample'),
+                collected: false
+            },
+            second: {
+                dom: document.getElementById('second-sample'),
+                collected: false
+            },
+            selected: '1'
+        };
+        /* Joystick buttons */
+        this.joysticks = {
+            all: document.getElementsByClassName('joystick-button'),
+            top: document.getElementById('joystick-button-top'),
+            left: document.getElementById('joystick-button-left'),
+            bottom: document.getElementById('joystick-button-bottom'),
+            right: document.getElementById('joystick-button-right'),
+            container: document.getElementById('joystick-container')
+        };
+        /* Collect button */
+        this.collectButton = {
+            element: document.getElementById('collect-button'),
+            icon: document.querySelector('#collect-button .indico-button-icon'),
+            text: document.querySelector('#collect-button .indico-button-text'),
+            backgroundOverlay: document.getElementById('background-overlay')
+        };
+        /* Configuration variables */
+        this.isSampleBackOverlayAlreadyDisplayed = false;
+        this.animationCollectButtonDuration = '3000' // ms
+        this.countCollect = 0;
     }
 
     initEvents() {
         super.initEvents();
-        this._initButtonsEvents();
-        this._initRadioButton();
-        this._initCollectEvent();
+        /* Init overlay events */
+        this._initOverlayEvents();
+        /* Init samples button event */
+        this._initSamplesButtonEvents();
+        /* Init joystick button events */
+        this._initJoystickButtonEvents();
+        /* Init collect button event */
+        this._initCollectButton();
+    }
+
+    _initOverlayEvents() {
+        this.instructionOverlay.button.addEventListener('click', () => {
+            Breadcrumb.setBarWidth(50);
+            this.instructionOverlay.element.style.opacity = '0';
+            setTimeout(() => {
+                this.instructionOverlay.element.style.display = 'none';
+            }, 600);
+        });
+
+        this.comeBackSampleOverlay.button.addEventListener('click', () => {
+            this.comeBackSampleOverlay.element.classList.remove('isShown');
+            this.activity.left.element.classList.remove('isBlur');
+            this.activity.right.element.classList.remove('isBlur');
+        });
+    }
+
+    _initSamplesButtonEvents() {
+        for (const sample of this.samples.all) {
+            sample.addEventListener('click', (e) => {
+                const selectedSample = e.target;
+                this.samples.selected = selectedSample.getAttribute('data-num');
+
+                /* Update collect button style if targeted sample has already been collected */
+                if (this._getTargetSample().collected) {
+                    console.log('Echantillon déjà collecté !');
+                    this._disableCollectButton();
+                } else {
+                    this._enableCollectButton();
+                }
+
+                /* Change style of sample buttons */
+                for (const sample of this.samples.all) {
+                    sample.classList.remove('isSelected');
+                }
+                selectedSample.classList.add('isSelected');
+            });
+        }
+    }
+
+    _initJoystickButtonEvents() {
+        /* Init stop event on release joystick buttons */
+        for (const joystick of this.joysticks.all) {
+            console.log(joystick);
+            joystick.addEventListener('touchend', () => {
+                console.log(`Stop ${this._getTargetSphero()}`);
+                this.joysticks.container.classList.remove('isTop', 'isLeft', 'isBottom', 'isRight');
+                this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.STOP, ACTIVITY.CLUE);
+            });
+        }
+
+        /* Init each button */
+        this.joysticks.top.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            console.log(`Forward ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isTop');
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE);
+            // this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this._getTargetSphero(), ACTION.FORWARD, ACTIVITY.CLUE));
+        });
+        this.joysticks.left.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            console.log(`Left ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isLeft');
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.LEFT, ACTIVITY.CLUE);
+        });
+        this.joysticks.bottom.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            console.log(`Bottom ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isBottom');
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.BACKWARD, ACTIVITY.CLUE);
+        });
+        this.joysticks.right.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            console.log(`Right ${this._getTargetSphero()}`);
+            this.joysticks.container.classList.add('isRight');
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.RIGHT, ACTIVITY.CLUE);
+        });
+    }
+
+    _initCollectButton() {
+        this.collectButton.element.addEventListener('click', () => {
+            this.countCollect++;
+
+            if (this.countCollect === 1) {
+                Breadcrumb.setBarWidth(75);
+            } else {
+                Breadcrumb.setBarWidth(100);
+            }
+
+            this.actionManager.emit(EVENT.INDICO, this._getTargetSphero(), ACTION.COLLECT, ACTIVITY.CLUE);
+            this._getTargetSample().collected = true;
+            /* Start collect button animation */
+            this._disableCollectButton(true)
+                .then(() => {
+                    if (!this.isSampleBackOverlayAlreadyDisplayed) {
+                        this.comeBackSampleOverlay.element.classList.add('isShown');
+                        this.activity.left.element.classList.add('isBlur');
+                        this.activity.right.element.classList.add('isBlur');
+                        this.isSampleBackOverlayAlreadyDisplayed = true;
+                    }
+                })
+        });
+    }
+
+    // Helpers function
+    _getTargetSphero() {
+        return this.samples.selected === '1' ? DEVICE.SPHERO1 : DEVICE.SPHERO2;
+    }
+
+    _getTargetSample() {
+        return this.samples.selected === '1' ? this.samples.first : this.samples.second;
+    }
+
+    async _disableCollectButton(withAnimation = false) {
+        const doAction = () => {
+            this.collectButton.element.disabled = true;
+            this.collectButton.icon.src = '../img/white-check.svg';
+            this.collectButton.text.innerText = 'Prélevé';
+        };
+        this.collectButton.backgroundOverlay.style.width = '100%';
+
+        if (withAnimation) {
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    doAction();
+                    resolve();
+                }, this.animationCollectButtonDuration)
+            });
+        } else {
+            doAction();
+        }
+
+        this.collectButton.backgroundOverlay.style.display = 'none';
+        this.collectButton.backgroundOverlay.style.width = '0';
+    }
+
+    _enableCollectButton() {
+        this.collectButton.backgroundOverlay.style.display = 'block';
+        this.collectButton.element.disabled = false;
+        this.collectButton.icon.src = '../img/collect.svg';
+        this.collectButton.text.innerText = 'Récolter';
     }
 
     getTemplate() {
@@ -47,102 +223,5 @@ export default class ClueActivity extends Activity {
 
     launch() {
         super.launch();
-        console.log(this.webSocketConnection);
-        console.log('clue activity launched');
-    }
-
-    // SET DEVICE DYNAMICALLY
-    _getCurrentDevice() {
-        if (this.device1.isChecked)
-            return DEVICE.SPHERO1;
-        else
-            return DEVICE.SPHERO2;
-    }
-
-    _setCurrentDevice(device) {
-        this.device = device;
-    }
-
-    // EVENTS HANDLER
-    _initButtonsEvents() {
-
-        for (let index = 0; index < this.actionButtons.length; index++) {
-            const element = this.actionButtons[index];
-            element.addEventListener('touchend', () => {
-                console.log("stop");
-                this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.STOP, ACTIVITY.CLUE));
-            });
-        }
-
-        this.forwardButton.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            console.log("forward clicked");
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.FORWARD, ACTIVITY.CLUE));
-        });
-
-        this.backwardButton.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            console.log("backward clicked");
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.BACKWARD, ACTIVITY.CLUE));
-        });
-
-        this.leftButton.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            console.log("left clicked");
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.LEFT, ACTIVITY.CLUE));
-        });
-
-        this.rightButton.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            console.log("right clicked");
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.RIGHT, ACTIVITY.CLUE));
-        });
-
-        this.collectButton.addEventListener("click", () => {
-            console.log("collect clicked");
-            this.webSocketConnection.emit(EVENT.INDICO, helpers.formatDatas(this.device, ACTION.COLLECT, ACTIVITY.CLUE));
-        });
-
-    }
-
-    _initRadioButton() {
-
-        let array = [this.device1, this.device2];
-
-        array.forEach(element => {
-            element.dom.addEventListener("click", (e) => {
-
-                array.forEach(el => {
-                    el.dom.classList.remove("active");
-                    el.isChecked = false;
-                    el.labelDom.classList.add("isUnactive");
-                });
-
-                e.target.classList.add("active");
-                element.isChecked = true;
-                element.labelDom.classList.remove("isUnactive");
-
-                this.device = this._getCurrentDevice();
-
-                if(element.isCollected) {
-                    this.collectIcone.classList.add("isPlain");
-                } else {
-                    this.collectIcone.classList.remove("isPlain");
-                }
-            })
-        });
-    }
-
-    _initCollectEvent() {
-        this.collectButton.addEventListener("click", () => {
-            if(this.device1.isChecked && !this.device1.isCollected) {
-                this.device1.isCollected = true;
-            }
-            if(this.device2.isChecked && !this.device2.isCollected) {
-                this.device2.isCollected = true;
-            }
-
-            this.collectIcone.classList.add("isPlain");
-        })
     }
 }

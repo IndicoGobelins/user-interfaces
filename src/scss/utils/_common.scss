@@ -1,3 +1,135 @@
 button {
     touch-action: manipulation;
 }
+
+div#activity-container {
+    display: flex;
+    width: 100%;
+}
+
+.activity {
+    width: 100%;
+    position: relative;
+}
+
+// Corners
+.corner {
+    position: absolute;
+    z-index: 15;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: $corner-size;
+        height: $corner-size;
+    }
+}
+
+#left-top {
+    top: $gap-container;
+    left: $gap-container;
+
+    &:before {
+        top: 0;
+        left: 0;
+        border-left: $corner-width solid $white;
+        border-top: $corner-width solid $white;
+    }
+}
+
+#left-bottom {
+    bottom: $gap-container;
+    left: $gap-container;
+
+    &:before {
+        bottom: 0;
+        left: 0;
+        border-bottom: $corner-width solid $white;
+        border-left: $corner-width solid $white;
+    }
+}
+
+#right-top {
+    top: $gap-container;
+    right: $gap-container;
+
+    &:before {
+        top: 0;
+        right: 0;
+        border-top: $corner-width solid $white;
+        border-right: $corner-width solid $white;
+    }
+}
+
+#right-bottom {
+    bottom: $gap-container;
+    right: $gap-container;
+
+    &:before {
+        right: 0;
+        bottom: 0;
+        border-bottom: $corner-width solid $white;
+        border-right: $corner-width solid $white;
+    }
+}
+
+// Logo
+img.logo {
+    position: absolute;
+    z-index: 15;
+    width: 154px;
+    right: 50px;
+    top: 30px;
+}
+
+// Vertical bar
+#vertical-bar-container {
+    position: absolute;
+    bottom: $gap-container;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    align-items: flex-end;
+    z-index: 15;
+    span {
+        background-color: $white;
+        display: block;
+        width: 2px;
+        height: 15px;
+        margin: 0 4px;
+
+        &:nth-child(5) {
+            height: 25px;
+        }
+    }
+}
+
+// Dash line
+hr.dash-line {
+    position: absolute;
+    border: 0 none;
+    border-top: 2px dashed $white;
+    background: none;
+    height:0;
+    width: 110px;
+    left: 0;
+    transform: translate(-100%, -50%);
+    overflow: unset;
+    margin: 0;
+    display: block;
+    top: 50%;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        display: block;
+        border-radius: 50%;
+        z-index: 3;
+    }
+}

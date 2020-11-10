@@ -1,103 +1,238 @@
 div[data-namespace="dog"] {
-    background-color: $royal;
-
+    transition: opacity .5s linear;
     display: flex;
-    justify-content: center;
-    padding: 10vh 10px;
+    justify-content: space-between;
+    padding: 0 0 0 50px;
 
-    img#logo {
-        width: 130px;
-        position: absolute;
+    &.isHidden {
+        opacity: 0;
     }
 
-    .wrapper {
-        width: 100vw;
-        height: 70vh;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10vh;
+    .dog-container {
+        visibility: hidden;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
 
-        .iconeContainer {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            div {
-                display: flex;
-                justify-content: center;
-                height: 215px;
-                position: relative;
-                width: $dog-icone-height;
-
-                img {
-                    position: absolute;
-                    height: $dog-icone-height;
-                }
-
-                .description {
-                    position: absolute;
-                    bottom: 6vh;
-                    text-align: center;
-                    background: $blue-blue;
-                    box-shadow: $box-sahdow-light;
-                    padding: 20px;
-                    height: fit-content;
-                    width: 100%;
-                    font-size: 17pt;
-                }
-            }
-
-            
+        &.isActive {
+            visibility: visible;
         }
+    }
 
-        .buttonsContainer {
+    .left {
+        flex: 1;
+        position: relative;
+
+        // Step 1 container
+        .dog-container.step1 {
             display: flex;
-            flex: 1;
-            justify-content: center;
             align-items: center;
+            justify-content: flex-start;
 
             div {
-                height: 200px;
-                width: 250px;
                 position: relative;
 
-                button {
-                    border: none;
+                span {
+                    position: absolute;
+                    width: 200px;
+                    height: 53px;
+                    font-family: $main-font;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    box-shadow: inset -3px -3px 6px 0 #152EEE, inset 3px 3px 6px 0 #14141E;
+                    background-color: $blue-blue;
                     display: flex;
-                    border-radius: 50px;
                     align-items: center;
-                    padding: $button-padding;
-                    background-color: $royal;
                     justify-content: center;
-                    margin-bottom: 20px;
-                    font-size: $font-size;
-                    position: absolute;
-                    width: 100%;
-                    box-shadow: $direction-btn-box-shadow;
-    
-                    &#standupButton {
-                        top: 0;
-                    }
-    
-                    &#searchButton {
-                        bottom: 0;
-                    }
-    
+                    bottom: -15px;
+                }
+            }
+        }
+        // Step 2 container
+        .dog-container.step2 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        // Step 3 container
+        .dog-container.step3 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            .suspect-container {
+                width: 200px;
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-image: linear-gradient(90deg, $white 50%, transparent 50%), linear-gradient(90deg, $white 50%, transparent 50%), linear-gradient(0deg, $white 50%, transparent 50%), linear-gradient(0deg, $white 50%, transparent 50%);
+                background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+                background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+                background-position: left top, right bottom, left bottom, right top;
+                margin-left: 20px;
+                animation: border-animation 1s infinite linear;
+
+                span {
+                    font-size: 120px;
+                    font-family: $main-font;
+                    font-weight: 700;
+                    display: none;
+                }
+
+                &.isFound {
+                    animation: none !important;
+                    border: 2px solid $white;
+                    background: none;
+
                     img {
-                        width: $button-image-width;
-                        margin-right: $button-margin-right;
-                        max-height: 25px;
+                        display: none;
                     }
+
                     span {
-                        color: $white;
-                        text-transform: uppercase;
+                        display: block;
                     }
                 }
             }
-
-            
         }
+        // Step 4 container
+        .dog-container.step4 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+
+    .right {
+        flex: 1;
+        position: relative;
+
+        // Step 1 container
+        .dog-container.step1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 300px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 265px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+        // Step 2 container
+        .dog-container.step2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 330px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 265px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+        // Step 3 container
+        .dog-container.step3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+
+            &.positionMode {
+                button#button-position-step3 {
+                    visibility: visible;
+                    position: relative;
+                }
+            }
+
+            &.searchMode {
+                button#button-search-step3 {
+                    visibility: visible;
+                    position: relative;
+                }
+            }
+
+            .text-container {
+                text-align: center;
+                width: 340px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                margin-top: 26px;
+                position: absolute;
+                visibility: hidden;
+            }
+        }
+        // Step 4 container
+        .dog-container.step4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text-container {
+                text-align: center;
+                width: 328px;
+                font-size: 20px;
+                line-height: 27px;
+
+                p {
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                width: 262px;
+                height: 77px;
+                margin-top: 26px;
+                position: relative;
+            }
+        }
+    }
+
+}
+
+@keyframes border-animation {
+    0% {
+        background-position: left top, right bottom, left bottom, right   top;
+    }
+    100% {
+        background-position: left 15px top, right 15px bottom , left bottom 15px , right   top 15px;
     }
 }

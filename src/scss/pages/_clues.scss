@@ -1,211 +1,165 @@
 div[data-namespace="clues"] {
-    .content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
         display: flex;
-        height: 80vh;
-        padding: 10vh 10px;
+        align-items: center;
 
-        .directionContainer {
-            flex: 1;
-            position: relative;
-
-            // centrer horizontalement
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-
-            .btnActionContainer {
-                width: $direction-btn-container-size;
-                height: $direction-btn-container-size;
-                position: relative;
-
-                .btn-action {
-                    background-color: $royal;
-                    border-radius: 50%;
-                    border: none;
-                    height: $diretion-btn-size;
-                    width: $diretion-btn-size;
-                    position: absolute;
-                    box-shadow: $direction-btn-box-shadow;
-
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                        height: $arrow-height;
-                    }
-
-                    &#forward {
-                        left: 50%;
-                        transform: translate(-50%, 0);
-
-                        img {
-                            transform: rotate(90deg) translate(-5px, 0px);
-                        }
-                    }
-
-                    &#backward {
-                        bottom: 0;
-                        left: 50%;
-                        transform: translate(-50%, 0);
-
-                        img {
-                            transform: rotate(-90deg) translate(-5px, 0px);
-                        }
-                    }
-
-                    &#left {
-                        top: 50%;
-                        transform: translate(0, -50%);
-
-                        img {
-                            transform: translate(-5px, 0px);
-                        }
-                    }
-
-                    &#right {
-                        top: 50%;
-                        transform: translate(0, -50%);
-                        right: 0;
-
-                        img {
-                            transform: rotate(180deg) translate(-5px, 0px);
-                        }
-                    }
-                }
-            }
+        &.isBlur {
+            filter: blur(8px);
         }
 
-        .middleContainer {
-            flex: 1;
-            position: relative;
+        #joystick-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.05);
             display: flex;
             justify-content: center;
-
-            .logoContainer, .logoContainer img {
-                width: $logo-width;
-            }
-
-            .radioContainer {
-                width: 70%;
-                position: absolute;
-                bottom: 0;
-                display: flex;
-                justify-content:  center;
-
-                .radioComponent {
-                    display: flex;
-                    flex-direction: column;
-                    width: 50%;
-                    align-items: center;
-                    height: $radio-component-height;
-                    font-size: $font-size;
-
-                    .radioInput {
-                        height: $radio-button-size;
-                        width: $radio-button-size;
-                        border: none;
-                        border-radius: 50%;
-                        background-color: transparent;
-
-                        &:not(.active) {
-                            box-shadow: $box-shadow-royal;
-                            background-color: $royal;
-                        }
-
-                        &.active {
-                            box-shadow: $box-sahdow-light;
-                            background-color: $blue-blue;
-                        }
-                    }
-
-                    .radioLabel {
-                        position: absolute;
-                        bottom: 0;
-                        font-size: 13px;
-                        font-weight: bold;
-
-                        &.isUnactive {
-                            opacity: 0.3;
-                            font-weight: normal;
-                        }
-                    }
-                }
-            }
-
-        }
-
-        .collectContainer {
-            flex: 1;
-            position: relative;
-
-            // centrer horizontalement
-            display: flex;
             align-items: center;
 
-            .collectActionContainer {
-                height: $collect-container-height;
-                width: $collect-container-width;
-                position: relative;
+            &.isTop {
+                border-top: 2px solid $white;
+            }
+            &.isRight {
+                border-right: 2px solid $white;
+            }
+            &.isBottom {
+                border-bottom: 2px solid $white;
+            }
+            &.isLeft {
+                border-left: 2px solid $white;
+            }
 
-                .collectElement {
+            &-inner {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+
+                // Link to make triangle with CSS: https://css-tricks.com/the-shapes-of-css/
+                .joystick-button {
+                    width: 90px;
+                    height: 90px;
+                    background-color: $royal;
+                    border-radius: 50%;
                     position: absolute;
+                    outline: none;
+                    border: none;
+                    user-select: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: inset 5px 2px 10px 0 rgba(14,29,242,0.5), inset -5px -2px 10px 0 rgba(20,20,30,0.2), -5px -2px 26px 0 #152EEE, 5px 2px 26px 0 #14141E;
 
-                    &#echantilon {
-                        top: 0;
-                        display: flex;
-                        width: 100%;
-                        font-size: $font-size;
-                        display: none;
+                    span {
+                        display: block;
+                        width: 0;
+                        height: 0;
 
-                        #iconeEchantillon {
-                            border-radius: 50%;
-                            border: 1px solid $pale-lilac;
-                            height: 15px;
-                            width: 15px;
-                            margin-right: 10px;
-
-                            &:after {
-                                content: "✔";
-                                display: none;
-                                color: $royal;
-                            }
-
-                            &.isPlain {
-                                background-color: $pale-lilac;
-
-                                &:after {
-                                    display: block;
-                                }
-                            }
-                        }
-
-
-                    }
-
-                    &#collect {
-                        align-items: center;
-                        display: flex;
-                        // bottom: 0;
-                        box-sizing: border-box;
-                        padding: $button-padding;
-                        border-radius: 50px;
-                        font-size: $font-size;
-                        border: none;
-                        color: $white;
-                        background-color: $royal;
-                        box-shadow: $direction-btn-box-shadow;
-
-                        .collect-icone {
-                            margin-right: 20px;
-
-                            img {
-                                width: $collect-icone-width;
-                            }
-                        }
                     }
                 }
 
+                button#joystick-button-top {
+                    top: -50%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    span {
+                        border-bottom: 20px solid $white;
+                        border-left: 20px solid transparent;
+                        border-right: 20px solid transparent;
+                    }
+                }
+
+                button#joystick-button-right {
+                    right: -50%;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    span {
+                        border-top: 20px solid transparent;
+                        border-left: 20px solid $white;
+                        border-bottom: 20px solid transparent;
+                    }
+                }
+
+                button#joystick-button-bottom {
+                    bottom: -50%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    span {
+                        border-top: 20px solid $white;
+                        border-left: 20px solid transparent;
+                        border-right: 20px solid transparent;
+                    }
+                }
+
+                button#joystick-button-left {
+                    left: -50%;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    span {
+                        border-top: 20px solid transparent;
+                        border-right: 20px solid $white;
+                        border-bottom: 20px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 36px;
+
+        &.isBlur {
+            filter: blur(8px);
+        }
+
+        button.indico-button {
+            margin-top: 50px;
+
+            span#background-overlay {
+                position: absolute;
+                z-index: 1;
+                background-color: $blue-blue;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                transition: width 3s linear;
+            }
+        }
+
+        .sample-container {
+            display: flex;
+            margin-top: 32px;
+
+            .sample {
+                background-color: $royal;
+                border: 2px solid $white;
+                font-family: $main-font;
+                font-size: 15px;
+                line-height: 18px;
+                height: 45px;
+                width: 134px;
+                font-weight: 500;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                white-space: nowrap;
+
+                &.isSelected {
+                    background-color: $white;
+                    color: $royal;
+                }
             }
         }
     }

@@ -21,10 +21,12 @@ class Application {
         this.socketClient = io(helpers.getUrlWebsocketServer());
         const WsRouter = new Router(this.socketClient);
 
+
+        /* Declare activity router */
         WsRouter
+            .on(ACTIVITY.CLUE, ClueActivity)
             .on(ACTIVITY.LABO_ACTIVITY, LaboActivity)
             .on(ACTIVITY.DOG, DogActivity)
-            .on(ACTIVITY.CLUE, ClueActivity)
             .init();
     }
 }

@@ -1,0 +1,112 @@
+#breadcrumb {
+    position: fixed;
+    z-index: 11;
+    bottom: $gap-container;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;justify-content: center;
+    align-items: center;
+    visibility: hidden;
+
+    &.isVisible {
+        visibility: visible;
+    }
+
+    .breadcrumb-item {
+        margin: 5px;
+    }
+
+    .progress-bar {
+        width: 50px;
+        height: 8px;
+        border-radius: 6px;
+        border: 1px solid $white;
+        position: relative;
+
+        &-inner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            background-color: $white;
+            transition: width .6s linear;
+            border-radius: 6px;
+        }
+
+        &-text {
+            position: absolute;
+            font-size: 14px;
+            font-weight: 300;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .step-number {
+        font-size: 16px;
+        font-weight: 300;
+        color: white;
+        opacity: 0.5;
+
+        &.isActive {
+            opacity: 1;
+        }
+    }
+
+    &.firstStep {
+        #step1 {
+            order: 1;
+        }
+
+        #step2 {
+            order: 3;
+        }
+
+        #step3 {
+            order: 4;
+        }
+
+        .progress-bar {
+            order: 2;
+        }
+    }
+
+    &.secondStep {
+        #step1 {
+            order: 1;
+        }
+
+        #step2 {
+            order: 2;
+        }
+
+        #step3 {
+            order: 4;
+        }
+
+        .progress-bar {
+            order: 3;
+        }
+    }
+
+    &.thirdStep {
+        #step1 {
+            order: 1;
+        }
+
+        #step2 {
+            order: 2;
+        }
+
+        #step3 {
+            order: 3;
+        }
+
+        .progress-bar {
+            order: 4;
+        }
+    }
+}

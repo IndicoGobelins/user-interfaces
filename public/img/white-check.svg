@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Check</title>
+    <desc>Created with Sketch.</desc>
+    <g id="VIEWPORT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Consignes---Taille-réel" transform="translate(-573.000000, -267.000000)" stroke="#FFFFFF" stroke-width="2.5">
+            <g id="Bouton-collecte-Copy" transform="translate(535.000000, 246.000000)">
+                <g id="Check" transform="translate(40.000000, 23.000000)">
+                    <circle id="Oval" cx="15" cy="15" r="15"></circle>
+                    <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="8.65384615 15.1781096 12.5691409 19.0384615 21.3461538 10.3846154"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

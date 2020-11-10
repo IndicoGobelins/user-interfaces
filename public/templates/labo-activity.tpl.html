@@ -1,54 +1,48 @@
-
-
-<div data-namespace="labo">
-
-    <img id="logo" src="../img/logo.svg" alt="">
-
-    <div class="wrapper">
-        
-        <div class="iconeContainer">
-            <img id="rotation" src="../img/labo-icone.svg" alt="">
+<div class="activity" data-namespace="labo">
+    <div class="left">
+        <!-- Step 1 -->
+        <div class="labo-container step1 isActive">
+            <img src="../img/reagent.svg" alt="">
         </div>
-
-        <div class="contentContainer">
-
-            <div class="stape1">
-
-                <div class="description">
-                    <p id="title">Avant l'analyse</p>
-                    <p>Déposez 5 gouttes de réactif dans la protection de l'échantillon.</p>
-                </div>
-
-                <div class="analyseContainer">
-                    <button id="launchButton"> <img src="../img/labo-analyse.svg" alt="">LANCER ANALYSE</button>
-                </div>
-
-            </div>
-            
-            <div class="stape2">
-                <div class="titleContainer">
-                    <p>Analyse en cours</p>
-                </div>
-
-                <div class="loadbarContainer">
-                    <div id="loadBarContainer">
-                        <div id="loadBar"></div>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="stape3">
-                <div class="title">
-                    <img src="../img/labo-end-analyse.svg">
-                    <p>Analyse terminée</p>
-                </div>
-                <div class="text">
-                    <p>Retirer les protections des échantillons pour traiter les résultats.</p>
-                </div>
-            </div>
-
+        <!-- Step 2 -->
+        <div class="labo-container step2">
+            <img id="illustration-step2" src="../img/samples-rotate.svg" alt="">
         </div>
+        <!-- Step 3 -->
+        <div class="labo-container step3">
+            <img src="../img/adn-comparison.svg" alt="">
+        </div>
+    </div>
+    <div class="right">
+        <!-- Step 1 -->
+        <div class="labo-container step1 isActive">
+            <div class="text-container">
+                <h2>Avant</h2>
+                <p>Déposer 5 gouttes de réactifs dans la capsule de l'échantillon.</p>
+            </div>
 
+            <button id="button-step1" class="indico-button">
+                <img class="indico-button-icon" src="../img/analysis.svg" alt="">
+                <span class="indico-button-text">Lancer analyse</span>
+                <hr class="dash-line">
+            </button>
+        </div>
+        <!-- Step 2 -->
+        <div class="labo-container step2">
+            <button class="indico-button" disabled>
+                <span class="indico-button-text">Analyse en cours</span>
+                <hr class="dash-line">
+            </button>
+            <div class="loading-bar">
+                <div id="load-bar" class="loading-bar-inner"></div>
+            </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="labo-container step3">
+            <div class="text-container">
+                <h2>Analyse terminée</h2>
+                <p>Retirer les protections des échantillons pour comparer les ADN.</p>
+            </div>
+        </div>
     </div>
 </div>

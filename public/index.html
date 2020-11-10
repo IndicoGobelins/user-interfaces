@@ -9,14 +9,69 @@
     <title>Home</title>
 </head>
 <body>
+<!-- Corners -->
+<div id="left-top" class="corner">
+    <span></span>
+    <span></span>
+</div>
+<div id="left-bottom" class="corner">
+    <span></span>
+    <span></span>
+</div>
+<div id="right-top" class="corner">
+    <span></span>
+    <span></span>
+</div>
+<div id="right-bottom" class="corner">
+    <span></span>
+    <span></span>
+</div>
 
-<a href="./templates/labo-activity.tpl.html">labo</a>
+<!-- Vertical bars -->
+<div id="vertical-bar-container">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-<div id="activity-overlay">
+<!-- Logo -->
+<img class="logo" src="./img/logo-white.svg" alt="">
+
+
+<!-- Responsive overlay -->
+<div class="overlay" id="responsive-overlay">
+    <img src="./img/logo-white.svg" alt="">
+
+    <img src="./img/screen-rotate.svg" alt="">
+
+    <h1>Tourner</h1>
+    <span>Veuillez tourner l'interface en mode paysage.</span>
+</div>
+
+<!-- Transition overlay -->
+<div class="overlay" id="activity-overlay">
     <div>
-        <img src="./img/logo-old.svg" alt="">
+        <img src="./img/logo-white.svg" alt="">
     </div>
 </div>
+
+<div id="breadcrumb">
+    <div id="step1" class="breadcrumb-item step-number isActive">01</div>
+    <div class="breadcrumb-item progress-bar">
+        <div id="progress-bar" class="progress-bar-inner"></div>
+        <span id="progress-bar-text" class="progress-bar-text"></span>
+    </div>
+    <div id="step2" class="breadcrumb-item step-number">02</div>
+    <div id="step3" class="breadcrumb-item step-number">03</div>
+</div>
+
+<!-- Activity container -->
 <div id="activity-container">
 </div>
 <script src="./js/main.js"></script>
